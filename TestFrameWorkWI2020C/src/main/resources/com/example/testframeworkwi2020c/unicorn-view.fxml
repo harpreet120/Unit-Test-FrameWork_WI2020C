@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0A1721;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0A1721;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testframeworkwi2020c.UnicornController">
    <bottom>
       <AnchorPane prefHeight="234.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -39,12 +39,12 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="107.0" layoutY="41.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="286.0" style="-fx-background-color: #f2b832;" text="Hinzufügen von deinem Quellcode" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <Button fx:id="pathButtonId" layoutX="107.0" layoutY="41.0" mnemonicParsing="false" onAction="#getPath" prefHeight="57.0" prefWidth="286.0" style="-fx-background-color: #f2b832;" text="Hinzufügen von deinem Quellcode" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="successtag" layoutX="241.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="115.0" />
+            <Text fx:id="successtagId" fill="#f2b832" layoutX="241.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="115.0" />
          </children>
       </AnchorPane>
    </center>
@@ -68,7 +68,7 @@
                   <Font name="Arial" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="681.0" layoutY="26.0" text="Code Smart Not Hard" textFill="#f2b832">
+            <Label layoutX="682.0" layoutY="27.0" text="Code Smart Not Hard" textFill="#f2b832">
                <font>
                   <Font size="18.0" />
                </font>
