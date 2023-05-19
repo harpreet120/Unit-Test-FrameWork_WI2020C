@@ -1,14 +1,13 @@
-package com.example.testframeworkwi2020c;
+package com.example.testframeworkwi2020c.testwuerfel;
 
-import com.example.testframeworkwi2020c.wuefel.Dealer;
-import com.example.testframeworkwi2020c.wuefel.IDice;
+import com.example.testframeworkwi2020c.wuerfel.Dealer;
+import com.example.testframeworkwi2020c.wuerfel.IDice;
 import static org.junit.Assert.*;
 import org.junit.*;
 
 public class TestDealer {
 
     private static class FakeDice implements IDice {
-
         int roll;
         @Override
         public int getNumber() {

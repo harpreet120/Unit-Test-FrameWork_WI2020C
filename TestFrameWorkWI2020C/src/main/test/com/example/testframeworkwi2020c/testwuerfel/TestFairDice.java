@@ -1,6 +1,6 @@
-package com.example.testframeworkwi2020c;
+package com.example.testframeworkwi2020c.testwuerfel;
 
-import com.example.testframeworkwi2020c.wuefel.FairDice;
+import com.example.testframeworkwi2020c.wuerfel.FairDice;
 import static org.junit.Assert.*;
 import org.junit.*;
 
