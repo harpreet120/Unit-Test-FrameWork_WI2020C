@@ -3,7 +3,7 @@ package com.example.testframeworkwi2020c.blackjack;
 public class ShyPlayer implements IPlayer {
     private int totalBudget;
 
-    ShyPlayer(){
+    public ShyPlayer(){
         this.totalBudget = (int) Math.round(Math.random()*10)+30;
     }
 
@@ -25,5 +25,9 @@ public class ShyPlayer implements IPlayer {
 
     public void informWinning(int profit){
         this.totalBudget += profit;
+    }
+
+    public int getTotalBudget(){
+        return totalBudget;
     }
 }

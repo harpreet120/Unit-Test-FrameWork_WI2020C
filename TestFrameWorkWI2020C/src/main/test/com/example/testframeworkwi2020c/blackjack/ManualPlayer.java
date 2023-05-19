@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class ManualPlayer implements IPlayer {
     private int totalBudget;
 
-    ManualPlayer(){
+    public ManualPlayer(){
         System.out.println("How many Budget do you have?:");
         Scanner input = new Scanner(System.in);
-        this.getChoice(10);
         this.totalBudget = input.nextInt();
     }
 
@@ -29,5 +28,9 @@ public class ManualPlayer implements IPlayer {
     public void informWinning(int profit){
         this.totalBudget += profit;
         System.out.println("Your new total Budget is "+this.totalBudget);
+    }
+
+    public int getTotalBudget() {
+        return totalBudget;
     }
 }

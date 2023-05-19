@@ -3,7 +3,7 @@ package com.example.testframeworkwi2020c.blackjack;
 public class Game {
     private IPlayer player;
 
-    Game(IPlayer player){
+    public Game(IPlayer player){
         this.player = player;
     }
 
