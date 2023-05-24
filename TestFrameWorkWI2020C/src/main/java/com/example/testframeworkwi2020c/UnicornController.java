@@ -23,13 +23,9 @@ public class UnicornController implements Initializable {
     private TextArea outputAreaId;
 
     @FXML
-    private Button pathButtonId;
-
-    @FXML
-    private Button startButtonId;
-
-    @FXML
     private Text successtagId;
+
+    private String filepath;
 
     // Hard-Gecoded. Später noch anpassen
     private String[] exercises = {"Aufgabe 1", "Aufgabe 2", "Aufgabe 3"};
@@ -45,9 +41,9 @@ public class UnicornController implements Initializable {
         return choiceBoxId.getValue();
     }
 
-    // Rückgabe der Pfade von Java oder ZIP Dateien
+    // Speicherung der Pfade Java oder ZIP Dateien in Variable filepath
     @FXML
-    public String getPath(){
+    public void safePath(){
         FileChooser.ExtensionFilter ex1 = new FileChooser.ExtensionFilter("Java Files", "*.java");
         FileChooser.ExtensionFilter ex2 = new FileChooser.ExtensionFilter("ZIP Ordner", "*.zip");
         FileChooser fileChooser = new FileChooser();
@@ -56,12 +52,19 @@ public class UnicornController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(HelloApplication.stage);
         if(selectedFile != null){
             successtagId.setText("Du hast erfolgreich die Datei "+ selectedFile.getName()+" ausgewählt.");
-
-            return selectedFile.getPath();
+            filepath = selectedFile.getPath();
         }
         else {
             successtagId.setText("Du hast keine Datei ausgewählt.");
-            return null;
         }
+    }
+
+    // Vergleich wird gestartet, indem eine Testklasse mit dem passenden Interface ITester aufgerufen wird
+    // Ausgabefeld (outputAreaId) muss noch befüllt werden
+    @FXML
+    public void startComparison(){
+        String aufgabenname = getSelectedExercise();
+        ITester tester = new TestTester();
+        tester.startComparison(aufgabenname, filepath);
     }
 }

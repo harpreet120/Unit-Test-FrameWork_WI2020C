@@ -34,12 +34,12 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="startButtonId" layoutX="108.0" layoutY="245.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="269.0" style="-fx-background-color: #f2b832;" text="Lösung kontrollieren" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+            <Button layoutX="108.0" layoutY="245.0" mnemonicParsing="false" onAction="#startComparison" prefHeight="59.0" prefWidth="269.0" style="-fx-background-color: #f2b832;" text="Lösung kontrollieren" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="pathButtonId" layoutX="107.0" layoutY="41.0" mnemonicParsing="false" onAction="#getPath" prefHeight="57.0" prefWidth="286.0" style="-fx-background-color: #f2b832;" text="Hinzufügen von deinem Quellcode" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <Button layoutX="107.0" layoutY="41.0" mnemonicParsing="false" onAction="#safePath" prefHeight="57.0" prefWidth="286.0" style="-fx-background-color: #f2b832;" text="Hinzufügen von deinem Quellcode" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="14.0" />
                </font>
