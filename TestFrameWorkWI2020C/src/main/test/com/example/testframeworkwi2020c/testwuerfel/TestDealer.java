@@ -3,7 +3,8 @@ package com.example.testframeworkwi2020c.testwuerfel;
 import com.example.testframeworkwi2020c.wuerfel.Dealer;
 import com.example.testframeworkwi2020c.wuerfel.IDice;
 import static org.junit.Assert.*;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class TestDealer {
 
@@ -22,10 +23,10 @@ public class TestDealer {
         }
     }
 
-    Dealer dealer;
-    FakeDice fakeDice;
+    private Dealer dealer;
+    private FakeDice fakeDice;
 
-    @Before
+    @BeforeEach
     public void initDealer(){
         fakeDice = new FakeDice();
         dealer = new Dealer();
