@@ -53,6 +53,7 @@ public class UnicornController implements Initializable {
         if(selectedFile != null){
             successtagId.setText("Du hast erfolgreich die Datei "+ selectedFile.getName()+" ausgewählt.");
             filepath = selectedFile.getPath();
+            System.out.println(filepath);
         }
         else {
             successtagId.setText("Du hast keine Datei ausgewählt.");
