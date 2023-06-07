@@ -12,10 +12,15 @@ import java.util.zip.ZipFile;
 
 public class DynamicMethodInvocationExample {
     public static void main(String[] args) {
-        String zipFilePath = "C:\\Users\\harpr\\Documents\\Dokumente DHBW\\TestRechner\\newsrc.zip";
-        String javaFilePath = "C:\\Users\\harpr\\Documents\\Dokumente DHBW\\TestRechner\\newsrc.zip\\TestAmberImplet.Java";
-        String className = "TestAmberImplet";
-        String methodName = "add";
+ //       String zipFilePath = "C:\\Users\\harpr\\Documents\\Dokumente DHBW\\TestRechner\\newsrc.zip";
+ //       String javaFilePath = "C:\\Users\\harpr\\Documents\\Dokumente DHBW\\TestRechner\\newsrc.zip\\TestAmberImplet.Java";
+ //       String className = "TestAmberImplet";
+ //       String methodName = "add";
+
+        String zipFilePath = "C:\\Users\\alisi\\Documents\\Paul\\Uebungen_Java\\X-II_black_jack\\Loesungen\\blackjack2.zip";
+        String javaFilePath = "C:\\Users\\alisi\\Documents\\Paul\\Uebungen_Java\\X-II_black_jack\\Loesungen\\blackjack2.zip\\RiskyPlayer.java";
+        String className = "RiskyPlayer";
+        String methodName = "getChoice";
 
         try {
             Object instance = createInstanceFromZipJavaFile(zipFilePath, javaFilePath, className);
