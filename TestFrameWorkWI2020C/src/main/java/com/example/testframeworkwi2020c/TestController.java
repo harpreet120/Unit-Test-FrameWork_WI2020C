@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 
-public class TestTester implements ITester{
+public class TestController implements ITester{
     @Override
     public boolean startComparison(String aufgabenname, String filepath) {
         return false;
@@ -23,8 +23,8 @@ public class TestTester implements ITester{
             throw new RuntimeException(e);
         }
         System.out.println(test.toString());
-        Object result = invokeMethodByName(test, "UnfairDice", "roll");
-        result = invokeMethodByName(test, "UnfairDice", "getNumber");
+        invokeMethodByName(test, "FairDice", "roll");
+        Object result = invokeMethodByName(test, "FairDice", "getNumber");
         System.out.println(result);
         if(test.isEmpty()){
             System.out.println("Hat nicht funktioniert");
