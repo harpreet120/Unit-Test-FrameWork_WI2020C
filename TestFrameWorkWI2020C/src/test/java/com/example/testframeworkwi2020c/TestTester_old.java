@@ -7,14 +7,14 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 
-public class TestTester_old implements ITester{
+public class TestTester_old implements ITester {
     @Override
     public boolean startComparison(String aufgabenname, String filepath) {
         return false;
     }
 
     public static void main(String jarFilePath) {
-        CodeRunnerBackend codeRunner = new CodeRunnerBackend();
+        CodeRunnerBackend_old codeRunner = new CodeRunnerBackend_old();
  //       String jarFilePath = "C:\\Users\\alisi\\IdeaProjects\\Ich bin Student\\out\\artifacts\\Ich_bin_Student_jar\\Ich bin Student.jar";
         List<Pair<String, Object>> test = null;
         try {

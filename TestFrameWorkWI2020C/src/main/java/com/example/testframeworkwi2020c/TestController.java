@@ -1,7 +1,6 @@
 package com.example.testframeworkwi2020c;
 
 import javafx.util.Pair;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,7 +13,7 @@ public class TestController implements ITester{
     }
 
     public static void main(String[] args) {
-        CodeRunnerBackend codeRunner = new CodeRunnerBackend();
+        CodeRunnerBackend_old codeRunner = new CodeRunnerBackend_old();
         String jarFilePath = "C:\\Users\\alisi\\IdeaProjects\\Ich bin Student\\out\\artifacts\\Ich_bin_Student_jar\\Ich bin Student.jar";
         List<Pair<String, Object>> test = null;
         try {
@@ -50,7 +49,4 @@ public class TestController implements ITester{
         }
         return null;
     }
-
-
-
 }

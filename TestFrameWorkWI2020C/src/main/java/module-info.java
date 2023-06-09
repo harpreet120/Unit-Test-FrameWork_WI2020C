@@ -12,7 +12,10 @@ module com.example.testframeworkwi2020c {
     requires javafx.graphics;
     requires java.compiler;
     requires junit;
+    requires org.mockito;
+    requires org.junit.jupiter.api;
 
     opens com.example.testframeworkwi2020c to javafx.fxml;
     exports com.example.testframeworkwi2020c;
+    exports com.example.testframeworkwi2020c.testwuerfel;
 }
