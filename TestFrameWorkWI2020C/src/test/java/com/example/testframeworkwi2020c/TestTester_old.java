@@ -9,8 +9,8 @@ import java.util.Optional;
 
 public class TestTester_old implements ITester {
     @Override
-    public boolean startComparison(String aufgabenname, String filepath) {
-        return false;
+    public String startComparison(String aufgabenname, String filepath) {
+        return "";
     }
 
     public static void main(String jarFilePath) {
