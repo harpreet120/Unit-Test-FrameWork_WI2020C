@@ -16,9 +16,10 @@ module com.example.testframeworkwi2020c {
     requires org.junit.jupiter.api;
     requires org.junit.platform.engine;
     requires org.junit.platform.commons;
+    requires org.junit.platform.launcher;
 
     opens com.example.testframeworkwi2020c to javafx.fxml;
     exports com.example.testframeworkwi2020c;
-    exports com.example.testframeworkwi2020c;
+    exports com.example.testframeworkwi2020c.testwuerfel;
     exports com.example.testframeworkwi2020c.testblackjack;
 }

@@ -14,16 +14,16 @@ import java.util.Optional;
 public class TestController implements ITester{
     @Override
     public String startComparison(String aufgabenname, String filepath) {
-        String tempDir = System.getProperty("java.io.tmpdir");
-        String configFilePath = tempDir + File.separator + "config.properties";
+//        String tempDir = System.getProperty("java.io.tmpdir");
+//        String configFilePath = tempDir + File.separator + "config.properties";
+//
+//        try (FileWriter writer = new FileWriter(configFilePath)) {
+//            writer.write("jarFilePath=" + filepath);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        try (FileWriter writer = new FileWriter(configFilePath)) {
-            writer.write("jarFilePath=" + filepath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Config file created: " + configFilePath);
+//        System.out.println("Config file created: " + configFilePath);
         switch (aufgabenname) {
             case "X-I_unfair_dice":
                 return testWuerfel(filepath);
@@ -33,6 +33,14 @@ public class TestController implements ITester{
 
     public String testWuerfel(String jarFilePath) {
         String textAnUser = "";
+        TestWuerfel testWuerfel = new TestWuerfel();
+        try {
+            textAnUser += testWuerfel.testFairDice(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 //        CodeRunnerBackend_old codeRunner = new CodeRunnerBackend_old();
 ////        String jarFilePath = "C:\\Users\\alisi\\IdeaProjects\\Ich bin Student\\out\\artifacts\\Ich_bin_Student_jar\\Ich bin Student.jar";
 //        List<Pair<String, Object>> test = null;
@@ -48,15 +56,15 @@ public class TestController implements ITester{
 //        if(test.isEmpty()){
 //            System.out.println("Hat nicht funktioniert");
 //        } else {
-            TestWuerfel testMain = new TestWuerfel();
-            textAnUser += testMain.testUnfairDice();
+//            TestWuerfel testMain = new TestWuerfel();
+//            textAnUser += testMain.testUnfairDice();
 //            textAnUser += testMain.testFairDice();
 //            textAnUser += testMain.testDealer();
  //       }
         return textAnUser;
     }
 
-    public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName) {
+    public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object... methodArgs) {
         Optional<Object> optionalObject = classObjects.stream()
                 .filter(pair -> pair.getKey().equals(className))
                 .map(Pair::getValue)
@@ -65,8 +73,17 @@ public class TestController implements ITester{
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
             try {
-                Method method = object.getClass().getMethod(methodName);
-                return method.invoke(object);
+                // Erzeuge ein Array der Parameter-Typen basierend auf den übergebenen Argumenten
+                Class<?>[] parameterTypes = new Class<?>[methodArgs.length];
+                for (int i = 0; i < methodArgs.length; i++) {
+                    parameterTypes[i] = methodArgs[i].getClass();
+                }
+
+                // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
+                Method method = object.getClass().getMethod(methodName, parameterTypes);
+
+                // Rufe die Methode auf dem Objekt mit den übergebenen Argumenten auf
+                return method.invoke(object, methodArgs);
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
             }
@@ -76,10 +93,10 @@ public class TestController implements ITester{
         return null;
     }
 
-    public static void main(String[] args) {
-        TestWuerfel testMain = new TestWuerfel();
-        System.out.println(testMain.testDealer());
-        System.out.println(testMain.testUnfairDice());
-        System.out.println(testMain.testFairDice());
-    }
+
+//    public static void main(String[] args) {
+//        TestWuerfel testMain = new TestWuerfel();
+//        System.out.println(testMain.testDealer());
+//        System.out.println(testMain.testUnfairDice());
+//    }
 }
