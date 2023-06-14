@@ -1,8 +1,8 @@
 package com.example.testframeworkwi2020c.testwuerfel;
 
 import com.example.testframeworkwi2020c.wuerfel.FairDice;
-import static org.junit.Assert.*;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -35,7 +35,7 @@ public class TestFairDice {
         fairDice.roll();
         int roll = fairDice.getNumber();
         System.out.println(roll);
-        assertTrue(isInRange(roll));
+        Assertions.assertTrue(isInRange(roll));
     }
 
     public Boolean isInRange(int roll){

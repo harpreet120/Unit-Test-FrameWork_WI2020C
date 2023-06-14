@@ -25,7 +25,7 @@ public class UnicornController implements Initializable {
     private String filepath;
 
     // Hard-Gecoded. Später noch anpassen
-    private String[] exercises = {"Aufgabe 1", "Aufgabe 2", "Aufgabe 3"};
+    private String[] exercises = {"X-I_unfair_dice", "Aufgabe 2", "Aufgabe 3"};
 
     // Hinzufügen der Aufgaben in das DropDown-Menü
     @Override
@@ -63,6 +63,8 @@ public class UnicornController implements Initializable {
     public void startComparison(){
         String aufgabenname = getSelectedExercise();
         ITester tester = new TestController();
-        tester.startComparison(aufgabenname, filepath);
+        outputAreaId.setText(tester.startComparison(aufgabenname, filepath));
+        outputAreaId.setText(outputAreaId.getText()+"\n Hat Funktioniert");
+
     }
 }

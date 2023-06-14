@@ -10,7 +10,7 @@ import java.util.jar.JarFile;
 
 public class CodeRunnerBackend {
 
-    public List<Pair<String, Object>> jarTest(String jarFilePath) throws Exception {
+    public static List<Pair<String, Object>> jarTest(String jarFilePath) throws Exception {
         List<Pair<String, Object>> objects = new ArrayList<>();
 
         // Laden der Jar-Datei
