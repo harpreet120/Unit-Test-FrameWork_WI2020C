@@ -7,14 +7,12 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FairDiceTester {
-
-
+public class UnfairDiceTester {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
-    String className = "FairDice";
+    String className = "UnfairDice";
 
-    public FairDiceTester(String jarFilePath) {
+    public UnfairDiceTester(String jarFilePath) {
         this.jarFilePath = jarFilePath;
     }
 
@@ -29,20 +27,16 @@ public class FairDiceTester {
         return false;
     }
 
-    public Boolean testRoll() throws Exception {
+    public Boolean testZahl() throws Exception { //Test muss eine 6 zurückgeben
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        TestController.invokeMethodByName(objectList,className,"roll");
+        Object reslut = TestController.invokeMethodByName(objectList,className,"getNumber");
 
-        System.out.println("Rolling the dice 100 times:");
-        for (int i = 0; i < 100; i++) {
-            TestController.invokeMethodByName(objectList,className,"roll");
-            Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
-
-            Number number = (Number) result;
-            int intValue = number.intValue();
-            if (intValue < 1 || intValue > 6){
-                return false;
-            }
+        Number number = (Number) reslut;
+        Integer intnumber = number.intValue();
+        if (intnumber == 6) {
+            return true;
         }
-        return true;
+        return false;
     }
 }

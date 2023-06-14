@@ -1,9 +1,8 @@
 package com.example.testframeworkwi2020c;
 
+import com.example.testframeworkwi2020c.wuerfeltester.DealerTester;
 import com.example.testframeworkwi2020c.wuerfeltester.FairDiceTester;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+import com.example.testframeworkwi2020c.wuerfeltester.UnfairDiceTester;
 
 
 public class TestWuerfel {
@@ -46,6 +45,37 @@ public class TestWuerfel {
             textAnUser += "\nroll() hat noch Fehler :(";
         }
         textAnUser += ("\nFair Dice tests abgeschlossen");
+        return textAnUser;
+    }
+
+    public String testUnfairDice(String jarFilePath) throws Exception {
+        String textAnUser = "";
+        UnfairDiceTester unfairDiceTester = new UnfairDiceTester(jarFilePath);
+        //TestGetNumber
+        if (unfairDiceTester.testGetNumber()) {
+            textAnUser += "\ngetNumber() erfolgreich getestet :)";
+        } else {
+            textAnUser += "\ngetNumber() hat noch Fehler :(";
+        }
+        //TestZahl
+        if (unfairDiceTester.testZahl()){
+            textAnUser += "\nZahl() erfolgreich getestet :)";
+        } else {
+            textAnUser += "\nZahl() hat noch Fehler :(";
+        }
+        textAnUser += ("\nUnfair Dice tests abgeschlossen");
+        return textAnUser;
+    }
+
+    public String testDealer(String jarFilePath) throws Exception {
+        String textAnUser = "";
+        DealerTester dealerTester = new DealerTester(jarFilePath);
+        //TestRollDice
+        if (dealerTester.testRollDice()) {
+            textAnUser += "\nRollDice() erfolgreich getestet :)";
+        } else {
+            textAnUser += "\nRollDice() hat noch Fehler :(";
+        }
         return textAnUser;
     }
 
