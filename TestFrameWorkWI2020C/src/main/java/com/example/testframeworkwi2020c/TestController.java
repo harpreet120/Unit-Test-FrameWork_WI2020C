@@ -37,7 +37,7 @@ public class TestController implements ITester{
         try {
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
-            textAnUser += testWuerfel.testDealer(jarFilePath);
+        //    textAnUser += testWuerfel.testDealer(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -18,7 +18,8 @@ public class FairDiceTester {
         this.jarFilePath = jarFilePath;
     }
 
-    public boolean testGetNumber() throws Exception { //Test ob getNumber() ein Integer zurück gibt
+    //Test ob getNumber() ein Integer zurück gibt
+    public boolean testGetNumber() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"roll");
         Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
