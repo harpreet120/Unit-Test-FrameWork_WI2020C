@@ -37,12 +37,10 @@ public class TestController implements ITester{
         try {
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
-        //    textAnUser += testWuerfel.testDealer(jarFilePath);
+            textAnUser += testWuerfel.testDealer(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 //        CodeRunnerBackend_old codeRunner = new CodeRunnerBackend_old();
 ////        String jarFilePath = "C:\\Users\\alisi\\IdeaProjects\\Ich bin Student\\out\\artifacts\\Ich_bin_Student_jar\\Ich bin Student.jar";
 //        List<Pair<String, Object>> test = null;
@@ -71,7 +69,6 @@ public class TestController implements ITester{
                 .filter(pair -> pair.getKey().equals(className))
                 .map(Pair::getValue)
                 .findFirst();
-
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
             try {
@@ -93,6 +90,15 @@ public class TestController implements ITester{
             System.out.println("Object not found for class name: " + className);
         }
         return null;
+    }
+
+    public static Object getObjectByClassName(List<Pair<String, Object>> objectList, String className) {
+        for (Pair<String, Object> pair : objectList) {
+            if (pair.getKey().equals(className)) {
+                return pair.getValue();
+            }
+        }
+        return null; // Objekt mit dem angegebenen Klassennamen wurde nicht gefunden
     }
 
 
