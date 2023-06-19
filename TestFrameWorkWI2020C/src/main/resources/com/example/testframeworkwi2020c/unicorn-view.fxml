@@ -25,9 +25,9 @@
       </AnchorPane>
    </bottom>
    <right>
-      <AnchorPane prefHeight="318.0" prefWidth="241.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="239.0" prefWidth="241.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea editable="false" layoutX="13.0" prefHeight="308.0" prefWidth="182.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <TextArea editable="false" layoutX="-2.0" layoutY="49.0" prefHeight="193.0" prefWidth="238.0" text="Kurzanleitung: &#10;1. Umwandlung der Aufgabenergebnisse in das Dateiformat .jar&#10;2. Auswahl der Aufgabe im DropDown &#10;3. Hinzufügen vom Quellcode&#10;4. Lösung kontrollieren&#10;&#10; " wrapText="true" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="49.0" />
          </children>
       </AnchorPane>
    </right>
