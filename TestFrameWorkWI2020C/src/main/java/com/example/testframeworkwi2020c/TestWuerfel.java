@@ -6,31 +6,8 @@ import com.example.testframeworkwi2020c.wuerfeltester.UnfairDiceTester;
 
 
 public class TestWuerfel {
-//    public String testUnfairDice() {
-//        String textAnUser = "";
-//        //Test einer kompletten Klasse
-//        Result result = JUnitCore.runClasses(TestUnfairDice.class);
-//        for (Failure failure : result.getFailures()) {
-//            //Custom fehlermeldung
-//            textAnUser += failure.toString();
-//        }
-//        textAnUser += ("\nUnfair Dice tests erfolgreich: " + result.wasSuccessful());
-//
-//        //Test einzelner Methoden in einer Klasse
-////        Request request = Request.method(TestUnfairDice.class,"testZahl");
-////        Result singleTestResult = new JUnitCore().run(request);
-////        if (singleTestResult.wasSuccessful()) {
-////            textAnUser +=("Einzelner Test erfolgreich");
-////        } else {
-////            for (Failure failure : singleTestResult.getFailures()) {
-////                textAnUser +=(failure.toString());
-////            }
-////        }
-//        return textAnUser;
-//    }
-
     public String testFairDice(String jarFilePath) throws Exception {
-        String textAnUser = "";
+        String textAnUser = "\nBeginn der FairDice Tests";
         FairDiceTester fairDiceTester = new FairDiceTester(jarFilePath);
         //TestGetNumber
         if (fairDiceTester.testGetNumber()) {
@@ -42,14 +19,14 @@ public class TestWuerfel {
         if (fairDiceTester.testRoll()){
             textAnUser += "\nroll() erfolgreich getestet :)";
         } else {
-            textAnUser += "\nroll() hat noch Fehler :(";
+            textAnUser += "\nroll() hat noch Fehler :(  Die Methode soll Zahlen zwischen 1 und 6 zurückgeben.";
         }
         textAnUser += ("\nFair Dice tests abgeschlossen");
         return textAnUser;
     }
 
     public String testUnfairDice(String jarFilePath) throws Exception {
-        String textAnUser = "";
+        String textAnUser = "\nBeginn der UnfairDice Tests";
         UnfairDiceTester unfairDiceTester = new UnfairDiceTester(jarFilePath);
         //TestGetNumber
         if (unfairDiceTester.testGetNumber()) {
@@ -68,7 +45,7 @@ public class TestWuerfel {
     }
 
     public String testDealer(String jarFilePath) throws Exception {
-        String textAnUser = "";
+        String textAnUser = "\nBeginn der Dealer Tests";
         DealerTester dealerTester = new DealerTester(jarFilePath);
         //TestRollDice
         if (dealerTester.testRollDice()) {
@@ -78,16 +55,4 @@ public class TestWuerfel {
         }
         return textAnUser;
     }
-
-//    public String testDealer(){
-//        String textAnUser = "";
-//        //Test einer kompletten Klasse
-//        Result result = JUnitCore.runClasses(TestDealer.class);
-//        for (Failure failure : result.getFailures()) {
-//            //Custom fehlermeldung
-//            textAnUser += failure.toString();
-//        }
-//        textAnUser += ("\nDealer tests erfolgreich: " + result.wasSuccessful());
-//        return textAnUser;
-//    }
 }

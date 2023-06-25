@@ -33,8 +33,9 @@ public class CodeRunnerBackend {
                             }
                             // Erstellen einer Instanz der Klasse
                             Object instance = clazz.getDeclaredConstructor().newInstance();
-                            // Hinzufügen des Klassennamens und der Instanz zur Liste
-                            objects.add(new Pair<>(className, instance));
+                            // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste
+                            String simpleClassName = clazz.getSimpleName();
+                            objects.add(new Pair<>(simpleClassName, instance));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
