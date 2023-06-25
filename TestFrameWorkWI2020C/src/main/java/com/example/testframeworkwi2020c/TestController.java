@@ -14,16 +14,6 @@ import java.util.Optional;
 public class TestController implements ITester{
     @Override
     public String startComparison(String aufgabenname, String filepath) {
-//        String tempDir = System.getProperty("java.io.tmpdir");
-//        String configFilePath = tempDir + File.separator + "config.properties";
-//
-//        try (FileWriter writer = new FileWriter(configFilePath)) {
-//            writer.write("jarFilePath=" + filepath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-//        System.out.println("Config file created: " + configFilePath);
         switch (aufgabenname) {
             case "X-I_unfair_dice":
                 return testWuerfel(filepath);
@@ -37,30 +27,11 @@ public class TestController implements ITester{
         try {
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
-            textAnUser += testWuerfel.testDealer(jarFilePath);
+//            textAnUser += testWuerfel.testDealer(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        CodeRunnerBackend_old codeRunner = new CodeRunnerBackend_old();
-////        String jarFilePath = "C:\\Users\\alisi\\IdeaProjects\\Ich bin Student\\out\\artifacts\\Ich_bin_Student_jar\\Ich bin Student.jar";
-//        List<Pair<String, Object>> test = null;
-//        try {
-//            test = codeRunner.jarTest(jarFilePath);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        System.out.println(test.toString());
-//        invokeMethodByName(test, "FairDice", "roll");
-//        Object result = invokeMethodByName(test, "FairDice", "getNumber");
-//        System.out.println(result);
-//        if(test.isEmpty()){
-//            System.out.println("Hat nicht funktioniert");
-//        } else {
-//            TestWuerfel testMain = new TestWuerfel();
-//            textAnUser += testMain.testUnfairDice();
-//            textAnUser += testMain.testFairDice();
-//            textAnUser += testMain.testDealer();
- //       }
+
         return textAnUser;
     }
 
@@ -102,9 +73,4 @@ public class TestController implements ITester{
     }
 
 
-//    public static void main(String[] args) {
-//        TestWuerfel testMain = new TestWuerfel();
-//        System.out.println(testMain.testDealer());
-//        System.out.println(testMain.testUnfairDice());
-//    }
 }

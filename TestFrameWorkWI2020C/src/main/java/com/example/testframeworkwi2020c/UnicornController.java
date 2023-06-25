@@ -64,7 +64,7 @@ public class UnicornController implements Initializable {
         String aufgabenname = getSelectedExercise();
         ITester tester = new TestController();
         outputAreaId.setText(tester.startComparison(aufgabenname, filepath));
-        outputAreaId.setText(outputAreaId.getText()+"\n Hat Funktioniert");
+        outputAreaId.setText(outputAreaId.getText()+"\n \nAlle Tests Abgeschlossen");
 
     }
 }

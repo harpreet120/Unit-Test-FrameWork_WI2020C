@@ -33,6 +33,8 @@ public class FairDiceTester {
     public Boolean testRoll() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
 
+        System.out.println(objectList);
+
         System.out.println("Rolling the dice 100 times:");
         for (int i = 0; i < 100; i++) {
             TestController.invokeMethodByName(objectList,className,"roll");

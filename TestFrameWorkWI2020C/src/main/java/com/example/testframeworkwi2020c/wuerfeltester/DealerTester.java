@@ -21,9 +21,22 @@ public class DealerTester {
         Boolean ergebnis;
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object fakeDice = TestController.getObjectByClassName(objectList,"FakeDice");
+        IDice testice = new IDice() {
+            @Override
+            public int getNumber() {
+                return ((IDice) fakeDice).getNumber();
+            }
 
-        TestController.invokeMethodByName(objectList,className,"setDice",fakeDice);
-      //  Object oFakeDice = TestController.invokeMethodByName(objectList,"FakeDice","getClassInstance");
+            @Override
+            public void roll() {
+                ((IDice) fakeDice).roll();
+            }
+        };
+
+     //   Class<?> oFakeDice = (Class<?>) TestController.invokeMethodByName(objectList,"FakeDice","getClassInstance");
+     //   IDice fakeDice = (IDice) fakeDiceO;
+        TestController.invokeMethodByName(objectList,className,"setDice",testice);
+
         TestController.invokeMethodByName(objectList,"FakeDice","roll",1);
         if (listToInt(objectList, className, "getScore", 1) == 1) {
             ergebnis = true;
