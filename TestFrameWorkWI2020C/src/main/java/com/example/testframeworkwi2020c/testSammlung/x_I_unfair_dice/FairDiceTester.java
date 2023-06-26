@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c.wuerfeltester;
+package com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice;
 
 import com.example.testframeworkwi2020c.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.TestController;

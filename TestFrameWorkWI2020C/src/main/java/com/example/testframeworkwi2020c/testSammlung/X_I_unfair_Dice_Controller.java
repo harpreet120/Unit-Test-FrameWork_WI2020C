@@ -1,11 +1,11 @@
-package com.example.testframeworkwi2020c;
+package com.example.testframeworkwi2020c.testSammlung;
 
-import com.example.testframeworkwi2020c.wuerfeltester.DealerTester;
-import com.example.testframeworkwi2020c.wuerfeltester.FairDiceTester;
-import com.example.testframeworkwi2020c.wuerfeltester.UnfairDiceTester;
+import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.DealerTester;
+import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.FairDiceTester;
+import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.UnfairDiceTester;
 
 
-public class TestWuerfel {
+public class X_I_unfair_Dice_Controller {
     public String testFairDice(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der FairDice Tests";
         FairDiceTester fairDiceTester = new FairDiceTester(jarFilePath);
