@@ -1,10 +1,9 @@
 package com.example.testframeworkwi2020c;
 
+import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import javafx.util.Pair;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -15,6 +14,8 @@ public class TestController implements ITester{
     @Override
     public String startComparison(String aufgabenname, String filepath) {
         switch (aufgabenname) {
+            case "04_OOP_Ü04":
+                return testTelephone(filepath);
             case "X-I_unfair_dice":
                 return testWuerfel(filepath);
         }
@@ -23,7 +24,7 @@ public class TestController implements ITester{
 
     public String testWuerfel(String jarFilePath) {
         String textAnUser = "";
-        TestWuerfel testWuerfel = new TestWuerfel();
+        X_I_unfair_Dice_Controller testWuerfel = new X_I_unfair_Dice_Controller();
         try {
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
@@ -32,6 +33,17 @@ public class TestController implements ITester{
             e.printStackTrace();
         }
 
+        return textAnUser;
+    }
+
+    public String testTelephone(String jarFilePath){
+        String textAnUser = "";
+        T04_OOP_ü04_Controller controller = new T04_OOP_ü04_Controller();
+        try {
+            textAnUser += controller.testSmartphone(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return textAnUser;
     }
 
