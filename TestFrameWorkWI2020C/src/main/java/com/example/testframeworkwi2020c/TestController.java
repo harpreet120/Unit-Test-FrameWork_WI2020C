@@ -1,6 +1,7 @@
 package com.example.testframeworkwi2020c;
 
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import javafx.util.Pair;
 
@@ -16,6 +17,8 @@ public class TestController implements ITester{
         switch (aufgabenname) {
             case "04_OOP_Ü04":
                 return testTelephone(filepath);
+            case "04_OOP_Ü05":
+                return testFigure(filepath);
             case "X-I_unfair_dice":
                 return testWuerfel(filepath);
         }
@@ -41,6 +44,20 @@ public class TestController implements ITester{
         T04_OOP_ü04_Controller controller = new T04_OOP_ü04_Controller();
         try {
             textAnUser += controller.testSmartphone(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe OOP_Übung05
+    // Weitergabe des "Text an User"
+    public String testFigure(String jarFilePath){
+        String textAnUser = "";
+        T04_OOP_Ü05_Controller controller = new T04_OOP_Ü05_Controller();
+        try {
+            textAnUser += controller.testCircle(jarFilePath);
+            textAnUser += controller.testQuadrat(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
