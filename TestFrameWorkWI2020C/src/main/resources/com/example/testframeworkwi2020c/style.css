@@ -1,3 +1,4 @@
+/* Spezifizierung der Schriftart auf Arial; ohne Spezifizierung schlägt die Codierung des Textes auf Mac fehl. */
 .root {
     -fx-font-family: Arial;
 }
