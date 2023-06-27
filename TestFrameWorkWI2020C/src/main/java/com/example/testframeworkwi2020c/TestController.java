@@ -1,5 +1,6 @@
 package com.example.testframeworkwi2020c;
 
+import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
@@ -13,14 +14,16 @@ import java.util.Optional;
 
 public class TestController implements ITester{
     @Override
-    public String startComparison(String aufgabenname, String filepath) {
+    public String startComparison(String aufgabenname, String jarFilePath) {
         switch (aufgabenname) {
             case "04_OOP_Ü04":
-                return testTelephone(filepath);
+                return testTelephone(jarFilePath);
             case "04_OOP_Ü05":
-                return testFigure(filepath);
+                return testFigure(jarFilePath);
             case "X-I_unfair_dice":
-                return testWuerfel(filepath);
+                return testWuerfel(jarFilePath);
+            case "X-III_StringController":
+                return testStringController(jarFilePath);
         }
         return "";
     }
@@ -44,6 +47,18 @@ public class TestController implements ITester{
         T04_OOP_ü04_Controller controller = new T04_OOP_ü04_Controller();
         try {
             textAnUser += controller.testSmartphone(jarFilePath);
+            textAnUser += controller.testMobile(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    public String testStringController (String jarFilePath) {
+        String textAnUser = "";
+        X_III_StringController_Controller controller = new X_III_StringController_Controller();
+        try {
+            textAnUser += controller.testStringController(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
