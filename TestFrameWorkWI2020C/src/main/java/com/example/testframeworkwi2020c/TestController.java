@@ -1,5 +1,6 @@
 package com.example.testframeworkwi2020c;
 
+import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
