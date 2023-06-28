@@ -7,6 +7,9 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Contro
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import javafx.util.Pair;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -98,6 +101,28 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
+
+    public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object[] methodArgs, Class<?>[] parameterTypes) {
+        Optional<Object> optionalObject = classObjects.stream()
+                .filter(pair -> pair.getKey().equals(className))
+                .map(Pair::getValue)
+                .findFirst();
+        if (optionalObject.isPresent()) {
+            Object object = optionalObject.get();
+            try {
+                // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
+                Method method = object.getClass().getMethod(methodName, parameterTypes);
+
+                // Rufe die Methode auf dem Objekt mit den übergebenen Argumenten auf
+                return method.invoke(object, methodArgs);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
+            }
+        } else {
+            System.out.println("Object not found for class name: " + className);
+        }
+        return null;
+    }
     public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object... methodArgs) {
         Optional<Object> optionalObject = classObjects.stream()
                 .filter(pair -> pair.getKey().equals(className))
@@ -106,10 +131,12 @@ public class TestController implements ITester{
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
             try {
-                // Erzeuge ein Array der Parameter-Typen basierend auf den übergebenen Argumenten
-                Class<?>[] parameterTypes = new Class<?>[methodArgs.length];
-                for (int i = 0; i < methodArgs.length; i++) {
-                    parameterTypes[i] = methodArgs[i].getClass();
+                Class<?>[] parameterTypes = null;
+                if (methodArgs != null) {
+                    parameterTypes = new Class<?>[methodArgs.length];
+                    for (int i = 0; i < methodArgs.length; i++) {
+                        parameterTypes[i] = methodArgs[i].getClass();
+                    }
                 }
 
                 // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
@@ -125,6 +152,7 @@ public class TestController implements ITester{
         }
         return null;
     }
+
 
     public static Object getObjectByClassName(List<Pair<String, Object>> objectList, String className) {
         for (Pair<String, Object> pair : objectList) {

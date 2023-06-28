@@ -14,17 +14,17 @@ public class X_III_StringController_Controller {
             textAnUser += "\naddString() hat noch Fehler :(";
         }
         //TestReplaceStringWithIndices
-//        if (tester.testReplaceStringWithIndices()) {
-//            textAnUser += "\nreplaceStringWithIndices() erfolgreich getestet :)";
-//        } else {
-//            textAnUser += "\nreplaceStringWithIndices() hat noch Fehler :(";
-//        }
+        if (tester.testReplaceStringWithIndices()) {
+            textAnUser += "\nreplaceStringWithIndices() erfolgreich getestet :)";
+        } else {
+            textAnUser += "\nreplaceStringWithIndices() hat noch Fehler :(";
+        }
         //TestReplaceStringWithStartIndex
-//        if (tester.testReplaceStringWithStartIndex()) {
-//            textAnUser += "\nreplaceStringWithStartIndex() erfolgreich getestet :)";
-//        } else {
-//            textAnUser += "\nreplaceStringWithStartIndex() hat noch Fehler :(";
-//        }
+        if (tester.testReplaceStringWithStartIndex()) {
+            textAnUser += "\nreplaceStringWithStartIndex() erfolgreich getestet :)";
+        } else {
+            textAnUser += "\nreplaceStringWithStartIndex() hat noch Fehler :(";
+        }
         //TestGetString
         if (tester.testGetString()) {
             textAnUser += "\ngetString() erfolgreich getestet :)";

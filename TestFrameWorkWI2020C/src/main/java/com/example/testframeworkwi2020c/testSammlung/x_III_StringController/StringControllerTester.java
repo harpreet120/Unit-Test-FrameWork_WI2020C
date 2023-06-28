@@ -32,7 +32,7 @@ public class StringControllerTester {
     public Boolean testReplaceStringWithIndices() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"setString","Hello World!");
-        TestController.invokeMethodByName(objectList,className,"replaceString",6,11, "Universe");
+        TestController.invokeMethodByName(objectList, className, "replaceString", new Object[]{6, 11, "Universe"}, new Class[]{int.class, int.class, String.class});
         Object result = TestController.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
@@ -45,7 +45,7 @@ public class StringControllerTester {
     public Boolean testReplaceStringWithStartIndex() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"setString","Hello World!");
-        TestController.invokeMethodByName(objectList,className,"replaceString",6,"Universe");
+        TestController.invokeMethodByName(objectList,className,"replaceString",new Object[]{6,"Universe"},new Class[]{int.class,String.class});
         Object result = TestController.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
