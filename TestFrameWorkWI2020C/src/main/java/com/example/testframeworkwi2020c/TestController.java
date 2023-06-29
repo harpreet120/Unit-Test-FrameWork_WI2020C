@@ -1,11 +1,15 @@
 package com.example.testframeworkwi2020c;
 
+import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import javafx.util.Pair;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,16 +18,18 @@ import java.util.Optional;
 
 public class TestController implements ITester{
     @Override
-    public String startComparison(String aufgabenname, String filepath) {
+    public String startComparison(String aufgabenname, String jarFilePath) {
         switch (aufgabenname) {
             case "04_OOP_Ü04":
-                return testTelephone(filepath);
+                return testTelephone(jarFilePath);
             case "04_OOP_Ü05":
-                return testFigure(filepath);
+                return testFigure(jarFilePath);
             case "04_OOP_Ü06":
-                return testTrain(filepath);
+                return testTrain(jarFilePath);
             case "X-I_unfair_dice":
-                return testWuerfel(filepath);
+                return testWuerfel(jarFilePath);
+            case "X-III_StringController":
+                return testStringController(jarFilePath);
         }
         return "";
     }
@@ -47,6 +53,18 @@ public class TestController implements ITester{
         T04_OOP_ü04_Controller controller = new T04_OOP_ü04_Controller();
         try {
             textAnUser += controller.testSmartphone(jarFilePath);
+            textAnUser += controller.testMobile(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    public String testStringController (String jarFilePath) {
+        String textAnUser = "";
+        X_III_StringController_Controller controller = new X_III_StringController_Controller();
+        try {
+            textAnUser += controller.testStringController(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,6 +101,28 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
+
+    public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object[] methodArgs, Class<?>[] parameterTypes) {
+        Optional<Object> optionalObject = classObjects.stream()
+                .filter(pair -> pair.getKey().equals(className))
+                .map(Pair::getValue)
+                .findFirst();
+        if (optionalObject.isPresent()) {
+            Object object = optionalObject.get();
+            try {
+                // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
+                Method method = object.getClass().getMethod(methodName, parameterTypes);
+
+                // Rufe die Methode auf dem Objekt mit den übergebenen Argumenten auf
+                return method.invoke(object, methodArgs);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
+            }
+        } else {
+            System.out.println("Object not found for class name: " + className);
+        }
+        return null;
+    }
     public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object... methodArgs) {
         Optional<Object> optionalObject = classObjects.stream()
                 .filter(pair -> pair.getKey().equals(className))
@@ -91,10 +131,12 @@ public class TestController implements ITester{
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
             try {
-                // Erzeuge ein Array der Parameter-Typen basierend auf den übergebenen Argumenten
-                Class<?>[] parameterTypes = new Class<?>[methodArgs.length];
-                for (int i = 0; i < methodArgs.length; i++) {
-                    parameterTypes[i] = methodArgs[i].getClass();
+                Class<?>[] parameterTypes = null;
+                if (methodArgs != null) {
+                    parameterTypes = new Class<?>[methodArgs.length];
+                    for (int i = 0; i < methodArgs.length; i++) {
+                        parameterTypes[i] = methodArgs[i].getClass();
+                    }
                 }
 
                 // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
@@ -110,6 +152,7 @@ public class TestController implements ITester{
         }
         return null;
     }
+
 
     public static Object getObjectByClassName(List<Pair<String, Object>> objectList, String className) {
         for (Pair<String, Object> pair : objectList) {
