@@ -4,6 +4,7 @@ import com.example.testframeworkwi2020c.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.TestController;
 import javafx.util.Pair;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,21 +22,21 @@ public class DealerTester {
         Boolean ergebnis;
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object fakeDice = TestController.getObjectByClassName(objectList,"FakeDice");
-        IDice testice = new IDice() {
-            @Override
-            public int getNumber() {
-                return ((IDice) fakeDice).getNumber();
-            }
-
-            @Override
-            public void roll() {
-                ((IDice) fakeDice).roll();
-            }
-        };
+//        IDice testice = new IDice() {
+//            @Override
+//            public int getNumber() {
+//                return ((IDice) fakeDice).getNumber();
+//            }
+//
+//            @Override
+//            public void roll() {
+//                ((IDice) fakeDice).roll();
+//            }
+//        };
 
      //   Class<?> oFakeDice = (Class<?>) TestController.invokeMethodByName(objectList,"FakeDice","getClassInstance");
      //   IDice fakeDice = (IDice) fakeDiceO;
-        TestController.invokeMethodByName(objectList,className,"setDice",testice);
+        TestController.invokeMethodByName(objectList,className,"setDice",new Object[]{fakeDice},new Class[]{TestController.castObjectToInterface(fakeDice,"IDice")});
 
         TestController.invokeMethodByName(objectList,"FakeDice","roll",1);
         if (listToInt(objectList, className, "getScore", 1) == 1) {

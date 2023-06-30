@@ -7,13 +7,21 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Contro
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import javafx.util.Pair;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 
 public class TestController implements ITester{
@@ -163,5 +171,60 @@ public class TestController implements ITester{
         return null; // Objekt mit dem angegebenen Klassennamen wurde nicht gefunden
     }
 
+    public static <T> T castObjectToInterface(Object object, String interfaceSimpleName) {
+        Class<?> objectClass = object.getClass();
+        for (Class<?> interfaceClass : objectClass.getInterfaces()) {
+            if (interfaceClass.getSimpleName().equals(interfaceSimpleName)) {
+                return (T) interfaceClass.cast(object);
+            }
+        }
+        throw new IllegalArgumentException("Interface not found in the object's interfaces: " + interfaceSimpleName);
+    }
 
+    public static Class<?> getInterfaceFromList(File jarFile, String interfaceSimpleName) throws Exception {
+        List<Class<?>> interfaceList = extractInterfacesFromJar(jarFile);
+        for (Class<?> interfaceClass : interfaceList) {
+            if (interfaceClass.getSimpleName().equals(interfaceSimpleName)) {
+                return interfaceClass;
+            }
+        }
+        throw new IllegalArgumentException("Interface not found in the list: " + interfaceSimpleName);
+    }
+
+    public static List<Class<?>> extractInterfacesFromJar(File jarFile) throws Exception {
+        List<Class<?>> interfaces = new ArrayList<>();
+
+        // Erstelle einen URLClassLoader mit der JAR-Datei im Classpath
+        URLClassLoader classLoader = new URLClassLoader(new URL[]{jarFile.toURI().toURL()});
+
+        // Iteriere über alle Klassen im JAR-Datei
+        for (String className : getClassNamesFromJar(jarFile)) {
+            // Lade die Klasse zur Laufzeit
+            Class<?> loadedClass = classLoader.loadClass(className);
+
+            // Überprüfe, ob die Klasse ein Interface ist
+            if (loadedClass.isInterface()) {
+                interfaces.add(loadedClass);
+            }
+        }
+
+        return interfaces;
+    }
+    private static List<String> getClassNamesFromJar(File jarFile) throws IOException, IOException {
+        List<String> classNames = new ArrayList<>();
+
+        try (JarFile jar = new JarFile(jarFile)) {
+            Enumeration<JarEntry> entries = jar.entries();
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if (!entry.isDirectory() && entry.getName().endsWith(".class")) {
+                    String className = entry.getName().replace('/', '.');
+                    className = className.substring(0, className.length() - ".class".length());
+                    classNames.add(className);
+                }
+            }
+        }
+
+        return classNames;
+    }
 }
