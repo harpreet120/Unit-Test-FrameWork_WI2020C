@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c;
+package com.example.testframeworkwi2020c.testSammlung;
 
 public class TestResult<T> {
     private boolean success;

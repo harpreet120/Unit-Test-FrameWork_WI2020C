@@ -1,11 +1,8 @@
 package com.example.testframeworkwi2020c.testSammlung;
 
-import com.example.testframeworkwi2020c.TestResult;
 import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.DealerTester;
 import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.FairDiceTester;
 import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.UnfairDiceTester;
-
-import java.nio.charset.Charset;
 
 
 public class X_I_unfair_Dice_Controller {
@@ -29,7 +26,7 @@ public class X_I_unfair_Dice_Controller {
             } else {
                 textAnUser += "\n"+Emojis.FALSCH.getEmoji()+" Die Methode roll() hat noch Fehler. Es sollen die Zahlen 1 bis 6 als Variablenwert für 'augenzahl' gespeichert werden. Aktuell wird " + getRollResult.getReturnValue() + " nicht als Variablenwert für 'augenzahl' gespeichert.";
             }
-            }
+        }
         textAnUser += ("\nEnde der Tests für die Klasse FairDice.");
         return textAnUser;
     }
