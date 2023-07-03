@@ -87,6 +87,7 @@ public class TestController implements ITester{
         try {
             textAnUser += controller.testCircle(jarFilePath);
             textAnUser += controller.testQuadrat(jarFilePath);
+            textAnUser += "\nDas Interface IFigure kann aufgrund von Limitierungen des Testframeworks nicht  getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }

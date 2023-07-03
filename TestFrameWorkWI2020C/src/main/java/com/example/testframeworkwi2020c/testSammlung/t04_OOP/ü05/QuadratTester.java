@@ -20,26 +20,26 @@ public class QuadratTester {
     public QuadratTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     // Test der Methode getArea()
-    public boolean testGetArea() throws Exception {
+    public String testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
         TestController.invokeMethodByName(objectList,className,"getArea");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("a hoch 2")) {
-            return true;
+            return "true";
         }
-        return false;
+        return outputStreamCaptor.toString();
     }
 
     // Test der Methode getCircumference()
-    public boolean testGetCircumference() throws Exception {
+    public String testGetCircumference() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
         TestController.invokeMethodByName(objectList,className,"getCircumference");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("4a")) {
-            return true;
+            return "true";
         }
-        return false;
+        return outputStreamCaptor.toString();
     }
 }
