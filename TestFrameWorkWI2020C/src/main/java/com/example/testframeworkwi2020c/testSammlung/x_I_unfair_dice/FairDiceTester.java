@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice;
 
 import com.example.testframeworkwi2020c.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.TestResult;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -19,32 +20,43 @@ public class FairDiceTester {
     }
 
     //Test ob getNumber() ein Integer zurückgibt
-    public boolean testGetNumber() throws Exception {
+    public TestResult<Integer> testGetNumber() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"roll");
         Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
 
         if (result instanceof Integer) {
-            return true;
+            return new TestResult<>(true, (Integer) result);
         }
-        return false;
+
+        return new TestResult<>(false, null);
     }
 
-    public Boolean testRoll() throws Exception {
+    public TestResult<Integer> testRoll() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
 
         System.out.println(objectList);
 
         System.out.println("Rolling the dice 100 times:");
+        boolean[] numbers = new boolean[6]; // Array zum Speichern der vorkommenden Zahlen
         for (int i = 0; i < 100; i++) {
-            TestController.invokeMethodByName(objectList,className,"roll");
-            Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
+            TestController.invokeMethodByName(objectList, className, "roll");
+            Object result = TestController.invokeMethodByName(objectList, className, "getNumber");
             Number number = (Number) result;
             int intValue = number.intValue();
-            if (intValue < 1 || intValue > 6){
-                return false;
+            if (intValue < 1 || intValue > 6) {
+                return new TestResult<>(false,intValue);
+            }
+            numbers[intValue - 1] = true; // Markiere die vorgekommene Zahl im Array
+        }
+
+        // Überprüfe, ob alle Zahlen von 1 bis 6 mindestens einmal vorgekommen sind
+        for (int i = 0; i < numbers.length; i++) {
+            if (!numbers[i]) {
+                return new TestResult<>(false,i+1);
             }
         }
-        return true;
+
+        return new TestResult<>(true,null);
     }
 }
