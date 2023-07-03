@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice;
 
 import com.example.testframeworkwi2020c.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -16,18 +17,18 @@ public class UnfairDiceTester {
         this.jarFilePath = jarFilePath;
     }
 
-    public boolean testGetNumber() throws Exception { //Test ob getNumber() ein Integer zurück gibt
+    public TestResult<Integer> testGetNumber() throws Exception { //Test ob getNumber() ein Integer zurück gibt
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"roll");
         Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
 
         if (result instanceof Integer) {
-            return true;
+            return new TestResult<>(true,(Integer) result);
         }
-        return false;
+        return new TestResult<>(false,null);
     }
 
-    public Boolean testZahl() throws Exception { //Test muss eine 6 zurückgeben
+    public TestResult<Integer> testZahl() throws Exception { //Test muss eine 6 zurückgeben
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"roll");
         Object reslut = TestController.invokeMethodByName(objectList,className,"getNumber");
@@ -35,8 +36,8 @@ public class UnfairDiceTester {
         Number number = (Number) reslut;
         Integer intnumber = number.intValue();
         if (intnumber == 6) {
-            return true;
+            return new TestResult<>(true,intnumber);
         }
-        return false;
+        return new TestResult<>(false,intnumber);
     }
 }
