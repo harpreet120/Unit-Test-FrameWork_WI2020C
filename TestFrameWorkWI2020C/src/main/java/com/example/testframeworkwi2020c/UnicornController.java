@@ -1,6 +1,7 @@
 package com.example.testframeworkwi2020c;
 
 
+import com.example.testframeworkwi2020c.testSammlung.Emojis;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -68,7 +69,7 @@ public class UnicornController implements Initializable {
         String aufgabenname = getSelectedExercise();
         ITester tester = new TestController();
         outputAreaId.setText(tester.startComparison(aufgabenname, filepath));
-        outputAreaId.setText(outputAreaId.getText()+"\n \nAlle Tests Abgeschlossen");
+        outputAreaId.setText(outputAreaId.getText()+"\n \nAlle Tests Abgeschlossen" + Emojis.SMIRKING.getEmoji());
 
     }
 }
