@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü05;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ public class QuadratTester {
     public boolean testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
-        TestController.invokeMethodByName(objectList,className,"getArea");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"getArea");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("a hoch 2")) {
             return true;
@@ -35,7 +35,7 @@ public class QuadratTester {
     public boolean testGetCircumference() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
-        TestController.invokeMethodByName(objectList,className,"getCircumference");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"getCircumference");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("4a")) {
             return true;
