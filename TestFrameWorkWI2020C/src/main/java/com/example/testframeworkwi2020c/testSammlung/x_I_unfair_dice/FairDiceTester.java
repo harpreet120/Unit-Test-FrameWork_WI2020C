@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
@@ -22,8 +22,8 @@ public class FairDiceTester {
     //Test ob getNumber() ein Integer zurückgibt
     public TestResult<Integer> testGetNumber() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"roll");
-        Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getNumber");
 
         if (result instanceof Integer) {
             return new TestResult<>(true, (Integer) result);
@@ -40,8 +40,8 @@ public class FairDiceTester {
         System.out.println("Rolling the dice 100 times:");
         boolean[] numbers = new boolean[6]; // Array zum Speichern der vorkommenden Zahlen
         for (int i = 0; i < 100; i++) {
-            TestController.invokeMethodByName(objectList, className, "roll");
-            Object result = TestController.invokeMethodByName(objectList, className, "getNumber");
+            CodeRunnerBackend.invokeMethodByName(objectList, className, "roll");
+            Object result = CodeRunnerBackend.invokeMethodByName(objectList, className, "getNumber");
             Number number = (Number) result;
             int intValue = number.intValue();
             if (intValue < 1 || intValue > 6) {

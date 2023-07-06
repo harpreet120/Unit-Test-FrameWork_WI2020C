@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c;
+package com.example.testframeworkwi2020c.CoreSystem;
 
 
 import com.example.testframeworkwi2020c.testSammlung.Emojis;
@@ -67,7 +67,7 @@ public class UnicornController implements Initializable {
     @FXML
     public void startComparison(){
         String aufgabenname = getSelectedExercise();
-        ITester tester = new TestController();
+        TestController tester = new TestController();
         outputAreaId.setText(tester.startComparison(aufgabenname, filepath));
         outputAreaId.setText(outputAreaId.getText()+"\n \nAlle Tests Abgeschlossen" + Emojis.SMIRKING.getEmoji());
 
