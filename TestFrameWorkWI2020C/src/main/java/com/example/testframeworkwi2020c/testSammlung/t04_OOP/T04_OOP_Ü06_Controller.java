@@ -1,5 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP;
 
+import com.example.testframeworkwi2020c.testSammlung.Emojis;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü05.CircleTester;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06.GueterzugTester;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06.PersonenzugTester;
@@ -10,52 +12,56 @@ public class T04_OOP_Ü06_Controller {
 
     // Tests für die Klasse Zug
     public String testZug(String jarFilePath) throws Exception {
-        String textAnUser = "\nBeginn der Zug Tests";
+        String textAnUser = "\nBeginn der Tests für die Klasse Zug";
         ZugTester zugTester = new ZugTester(jarFilePath);
+        TestResult outputGetWagons = zugTester.testGetWagons();
 
         // Aufruf des Tests der Methode getWagons() inkl. Rückmeldung an den Benutzer
-        if (zugTester.testGetWagons()) {
-            textAnUser += "\ngetWagons() erfolgreich getestet :)";
+        if (outputGetWagons.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode getWagons() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\ngetWagons() hat noch Fehler. Bitte achte darauf, dass die korrekte Wagenanzahl von 3 (als Int-Wert) zurückgegeben wird.";
+            textAnUser += "\n"+Emojis.FALSCH.getEmoji()+" Die Methode getWagons() hat noch Fehler. Es soll die korrekte Wagenanzahl von 3 (als Int-Wert) zurückgegeben werden. Aktuell wird '"+outputGetWagons.getReturnValue() +"' zurückgegeben.";
         }
-        textAnUser += "\nEnde der Zug Tests";
+        textAnUser += "\nEnde der Tests für die Klasse Zug \n";
         return textAnUser;
     }
 
     // Tests für die Klasse Gueterzug
     public String testGueterzug(String jarFilePath) throws Exception {
-        String textAnUser = "\nBeginn der Güterzug Tests";
+        String textAnUser = "\nBeginn der Tests für die Klasse Güterzug ";
         GueterzugTester zugTester = new GueterzugTester(jarFilePath);
 
         // Aufruf des Tests der Methode beladen() inkl. Rückmeldung an den Benutzer
-        if (zugTester.testBeladen()) {
-            textAnUser += "\nbeladen() erfolgreich getestet :)";
+        TestResult outputBeladen = zugTester.testBeladen();
+        if (outputBeladen.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode beladen() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nbeladen() hat noch Fehler. Bitte achte darauf, dass \"tue rein...\" in System.out.println() geschrieben wird.";
+            textAnUser +=  "\n"+Emojis.FALSCH.getEmoji()+"Die Methode beladen() hat noch Fehler. Es soll 'tue rein...' in  System.out.println() ausgegeben werden. Aktuell wird '"+outputBeladen.getReturnValue()+"' ausgegeben.";
         }
         // Aufruf des Tests der Methode entladen() inkl. Rückmeldung an den Benutzer
-        if (zugTester.testEntladen()) {
-            textAnUser += "\nentladen() erfolgreich getestet :)";
+        TestResult outputEntladen = zugTester.testEntladen();
+        if (outputEntladen.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode entladen() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nentladen() hat noch Fehler. Bitte achte darauf, dass \"raus damit...\" in System.out.println() geschrieben wird.";
+            textAnUser +=  "\n"+Emojis.FALSCH.getEmoji()+"Die Methode entladen() hat noch Fehler. Es soll 'raus damit...' in  System.out.println() ausgegeben werden. Aktuell wird '"+outputEntladen.getReturnValue()+"' ausgegeben.";
         }
-        textAnUser += "\nEnde der Güterzug Tests";
+        textAnUser += "\nEnde der Tests für die Klasse Güterzug \n";
         return textAnUser;
     }
 
     // Tests für die Klasse Spezialzug
     public String testSpezialzug(String jarFilePath) throws Exception {
-        String textAnUser = "\nBeginn der Spezialzug Tests";
+        String textAnUser = "\nBeginn der Tests für die Klasse Spezialzug ";
         SpezialZugTester spezialZugTester = new SpezialZugTester(jarFilePath);
 
         // Aufruf des Tests der Methode sichern() inkl. Rückmeldung an den Benutzer
-        if (spezialZugTester.testSichern()) {
-            textAnUser += "\nsichern() erfolgreich getestet :)";
+        TestResult outputSichern = spezialZugTester.testSichern();
+        if (outputSichern.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode sichern() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nsichern() hat noch Fehler. Bitte achte darauf, dass \"Ich checke...\" in System.out.println() geschrieben wird.";
+            textAnUser +=  "\n"+Emojis.FALSCH.getEmoji()+"Die Methode sichern() hat noch Fehler. Es soll 'Ich checke...' in  System.out.println() ausgegeben werden. Aktuell wird '"+outputSichern.getReturnValue()+"' ausgegeben.";
         }
-        textAnUser += "\nEnde der Spezialzug Tests";
+        textAnUser += "\nEnde der Tests für die Klasse Spezialzug  \n";
         return textAnUser;
     }
 
@@ -65,19 +71,21 @@ public class T04_OOP_Ü06_Controller {
         PersonenzugTester personenzugTester = new PersonenzugTester(jarFilePath);
 
         // Aufruf des Tests der Methode essen() inkl. Rückmeldung an den Benutzer
-        if (personenzugTester.testEssen()) {
-            textAnUser += "\nessen() erfolgreich getestet :)";
+        TestResult<String> outputEssen = personenzugTester.testEssen();
+        if (outputEssen.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode essen() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nessen() hat noch Fehler. Bitte achte darauf, dass \"Mpf Mpf\" in System.out.println() geschrieben wird.";
+            textAnUser +=  "\n"+Emojis.FALSCH.getEmoji()+"Die Methode essen() hat noch Fehler. Es soll 'Mpf Mpf' in  System.out.println() ausgegeben werden. Aktuell wird '"+outputEssen.getReturnValue()+"' ausgegeben.";
         }
 
         // Aufruf des Tests der Methode getWagons() inkl. Rückmeldung an den Benutzer
-        if (personenzugTester.testEssen()) {
-            textAnUser += "\ngetWagons() erfolgreich getestet :)";
+        TestResult outputWagons = personenzugTester.testGetWagons();
+        if (outputWagons.isSuccess()) {
+            textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode getWagons() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\ngetWagons() hat noch Fehler. Bitte achte darauf, dass der Wert 10 (als int) zurückgegeben wird.";
+            textAnUser += "\n"+Emojis.FALSCH.getEmoji()+" Die Methode getWagons() hat noch Fehler. Es soll die korrekte Wagenanzahl von 10 (als Int-Wert) zurückgegeben werden. Aktuell wird "+outputWagons.getReturnValue() +" zurückgegeben.";
         }
-        textAnUser += "\nEnde der Personenzug Tests";
+        textAnUser += "\nEnde der Tests für die Klasse Personenzug  \n";
         return textAnUser;
     }
 }
