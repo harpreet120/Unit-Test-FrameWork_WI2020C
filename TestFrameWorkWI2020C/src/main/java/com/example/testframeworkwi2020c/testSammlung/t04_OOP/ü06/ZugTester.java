@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class ZugTester {
     // Test der Methode getWagons()
     public boolean testGetWagons() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        Object result = TestController.invokeMethodByName(objectList,className,"getWagons");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getWagons");
         //Rückgabewert prüfen
         Number number = (Number) result;
         Integer intnumber = number.intValue();

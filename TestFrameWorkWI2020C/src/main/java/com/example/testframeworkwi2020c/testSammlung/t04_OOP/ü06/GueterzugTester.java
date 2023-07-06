@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ public class GueterzugTester {
     public boolean testBeladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = TestController.invokeMethodByName(objectList,className,"beladen");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"beladen");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
@@ -37,7 +37,7 @@ public class GueterzugTester {
     public boolean testEntladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = TestController.invokeMethodByName(objectList,className,"entladen");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"entladen");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen

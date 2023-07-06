@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ public class SpezialZugTester {
     public boolean testSichern() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = TestController.invokeMethodByName(objectList,className,"sichern");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"sichern");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
