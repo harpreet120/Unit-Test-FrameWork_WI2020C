@@ -1,7 +1,8 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06;
 
+
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.CoreSystem.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -14,37 +15,39 @@ public class GueterzugTester {
     String jarFilePath;
     String className = "Gueterzug";
     private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private ByteArrayOutputStream outputStreamCaptor;
 
     // Konstruktor
     public GueterzugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     // Test der Methode beladen()
-    public boolean testBeladen() throws Exception {
+    public TestResult<String> testBeladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"beladen");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
         if (result == null && outputStreamCaptor.toString().contains("tue rein...")) {
-            return true;
+           return new TestResult<>(true, null);
         }
-        return false;
+        return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
     //Test der Methode entladen()
-    public boolean testEntladen() throws Exception {
+    public TestResult<String> testEntladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"entladen");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
         if (result == null && outputStreamCaptor.toString().contains("raus damit...")) {
-            return true;
+            return new TestResult<>(true,outputStreamCaptor.toString());
         }
-        return false;
+        return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
 }

@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü05;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.CoreSystem.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -14,32 +14,34 @@ public class QuadratTester {
     String jarFilePath;
     String className = "Quadrat";
     private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private ByteArrayOutputStream outputStreamCaptor;
 
     // Konstruktor
     public QuadratTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     // Test der Methode getArea()
-    public String testGetArea() throws Exception {
+    public TestResult<String> testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        outputStreamCaptor= new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"getArea");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("a hoch 2")) {
-            return "true";
+            return new TestResult<>(true, null);
         }
-        return outputStreamCaptor.toString();
+        return new TestResult<>(false, outputStreamCaptor.toString());
     }
 
     // Test der Methode getCircumference()
-    public String testGetCircumference() throws Exception {
+    public TestResult<String> testGetCircumference() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        outputStreamCaptor= new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"getCircumference");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("4a")) {
-            return "true";
+            return new TestResult<>(true, null);
         }
-        return outputStreamCaptor.toString();
+        return new TestResult<>(false, outputStreamCaptor.toString());
     }
 }

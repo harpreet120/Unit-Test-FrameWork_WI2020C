@@ -8,7 +8,6 @@ module com.example.testframeworkwi2020c {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
-    requires janino;
     requires javafx.graphics;
     requires java.compiler;
     requires junit;
