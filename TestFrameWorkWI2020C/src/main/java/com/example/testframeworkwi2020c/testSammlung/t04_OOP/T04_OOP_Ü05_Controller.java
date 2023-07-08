@@ -16,7 +16,7 @@ public class T04_OOP_Ü05_Controller {
         if (outputGetArea.isSuccess()){
             textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode getArea() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\n"+ Emojis.FALSCH.getEmoji() +" Die Methode getArea() hat noch Fehler. Es soll \"pi *r hoch 2\" im System.out.println() ausgegeben werden. Aktuell wird \""+outputGetArea.getReturnValue()+"\" ausgegeben." ;
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji() +" Die Methode getArea() hat noch Fehler. Es soll \"pi * r hoch 2\" im System.out.println() ausgegeben werden. Aktuell wird \""+outputGetArea.getReturnValue()+"\" ausgegeben." ;
         }
 
         // Aufruf des Tests der Methode getCircumference() inkl. Rückmeldung an den Benutzer
@@ -37,7 +37,7 @@ public class T04_OOP_Ü05_Controller {
 
         // Aufruf des Tests der Methode getArea() inkl. Rückmeldung an den Benutzer
         TestResult outputGetArea = quadratTester.testGetArea();
-        if (outputGetArea.equals("true")){
+        if (outputGetArea.isSuccess()){
             textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode getArea() wurde erfolgreich getestet.";
         } else {
             textAnUser += "\n"+ Emojis.FALSCH.getEmoji() +" Die Methode getArea() hat noch Fehler. Es soll \"a hoch 2\" im System.out.println() ausgegeben werden. Aktuell wird \""+outputGetArea.getReturnValue()+"\" ausgegeben." ;
@@ -45,7 +45,7 @@ public class T04_OOP_Ü05_Controller {
 
         // Aufruf des Tests der Methode getCircumference() inkl. Rückmeldung an den Benutzer
         TestResult outputGetCircumference = quadratTester.testGetCircumference();
-        if (outputGetCircumference.equals("true")){
+        if (outputGetCircumference.isSuccess()){
             textAnUser += "\n"+ Emojis.RICHTIG.getEmoji() +" Die Methode getCircumference() wurde erfolgreich getestet.";
 
         } else {

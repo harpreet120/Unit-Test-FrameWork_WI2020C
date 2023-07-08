@@ -29,7 +29,7 @@ public class QuadratTester {
         if (outputStreamCaptor.toString().contains("a hoch 2")) {
             return new TestResult<>(true, null);
         }
-        return new TestResult<>(false, outputStreamCaptor.toString());
+        return new TestResult<>(false, outputStreamCaptor.toString().trim());
     }
 
     // Test der Methode getCircumference()
@@ -42,6 +42,6 @@ public class QuadratTester {
         if (outputStreamCaptor.toString().contains("4a")) {
             return new TestResult<>(true, null);
         }
-        return new TestResult<>(false, outputStreamCaptor.toString());
+        return new TestResult<>(false, outputStreamCaptor.toString().trim());
     }
 }

@@ -21,17 +21,17 @@ public class CircleTester {
     public CircleTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     // Test der Methode getArea()
+    // Achtung! Fehler?
     public TestResult<String> testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor= new ByteArrayOutputStream();
-
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"getArea");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("pi * r hoch 2")) {
             return new TestResult<>(true, null);
         }
-        return new TestResult<>(false, outputStreamCaptor.toString());
+        return new TestResult<>(false, outputStreamCaptor.toString().trim());
     }
 
     // Test der Methode getCircumference()
@@ -45,6 +45,6 @@ public class CircleTester {
         if (outputStreamCaptor.toString().contains("2*pi*r")) {
             return new TestResult<>(true, null);
         }
-        return new TestResult<>(false, outputStreamCaptor.toString());
+        return new TestResult<>(false, outputStreamCaptor.toString().trim());
     }
 }
