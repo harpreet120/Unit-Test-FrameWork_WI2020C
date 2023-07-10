@@ -1,5 +1,4 @@
-package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06;
-
+package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü08;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
@@ -10,44 +9,43 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GueterzugTester {
+public class FastCarTester {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
-    String className = "Gueterzug";
+    String className = "FastCar";
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
     // Konstruktor
-    public GueterzugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
+    public FastCarTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode beladen()
-    public TestResult<String> testBeladen() throws Exception {
+    // Test der Methode open() von der abstrakten Elternklasse
+    public TestResult<String> testOpen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"beladen");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"open");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
-        if (result == null && outputStreamCaptor.toString().contains("tue rein...")) {
-           return new TestResult<>(true, null);
+        if (result == null && outputStreamCaptor.toString().contains("it is opened")) {
+            return new TestResult<>(true, null);
         }
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
-    //Test der Methode entladen()
-    public TestResult<String> testEntladen() throws Exception {
+    // Test der Methode drive()
+    public TestResult<String> testDrive() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"entladen");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"drive");
         System.setOut(standardOut);
 
         //Rückgabewert (null) und Benutzerausgabe prüfen
-        if (result == null && outputStreamCaptor.toString().contains("raus damit...")) {
-            return new TestResult<>(true,outputStreamCaptor.toString());
+        if (result == null && outputStreamCaptor.toString().contains("wrooooooom")) {
+            return new TestResult<>(true, null);
         }
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
-
 }

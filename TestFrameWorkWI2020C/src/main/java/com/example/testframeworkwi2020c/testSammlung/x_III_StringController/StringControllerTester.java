@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.x_III_StringController;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -18,9 +18,9 @@ public class StringControllerTester {
 
     public Boolean testAddString() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello");
-        TestController.invokeMethodByName(objectList,className,"addString"," World!");
-        Object result = TestController.invokeMethodByName(objectList,className,"getString");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"addString"," World!");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello World!"));
@@ -31,9 +31,9 @@ public class StringControllerTester {
 
     public Boolean testReplaceStringWithIndices() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello World!");
-        TestController.invokeMethodByName(objectList, className, "replaceString", new Object[]{6, 11, "Universe"}, new Class[]{int.class, int.class, String.class});
-        Object result = TestController.invokeMethodByName(objectList,className,"getString");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello World!");
+        CodeRunnerBackend.invokeMethodByName(objectList, className, "replaceString", new Object[]{6, 11, "Universe"}, new Class[]{int.class, int.class, String.class});
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello Universe!"));
@@ -44,9 +44,9 @@ public class StringControllerTester {
 
     public Boolean testReplaceStringWithStartIndex() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello World!");
-        TestController.invokeMethodByName(objectList,className,"replaceString",new Object[]{6,"Universe"},new Class[]{int.class,String.class});
-        Object result = TestController.invokeMethodByName(objectList,className,"getString");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello World!");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"replaceString",new Object[]{6,"Universe"},new Class[]{int.class,String.class});
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello Universe!"));
@@ -57,8 +57,8 @@ public class StringControllerTester {
 
     public Boolean testGetString() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello");
-        Object result = TestController.invokeMethodByName(objectList,className,"getString");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello"));
@@ -69,9 +69,9 @@ public class StringControllerTester {
 
     public Boolean testSetString() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello");
-        TestController.invokeMethodByName(objectList,className,"setString","Goodbye");
-        Object result = TestController.invokeMethodByName(objectList,className,"getString");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Goodbye");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Goodbye"));
@@ -82,8 +82,8 @@ public class StringControllerTester {
 
     public Boolean testGetLength() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello");
-        Object result = TestController.invokeMethodByName(objectList,className,"getLength");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getLength");
         if(result instanceof Number) {
             Number num = (Number) result;
             Integer value = num.intValue();
@@ -95,8 +95,8 @@ public class StringControllerTester {
 
     public Boolean testGetCapacity() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"setString","Hello");
-        Object result = TestController.invokeMethodByName(objectList,className,"getCapacity");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getCapacity");
         if(result instanceof Number) {
             Number num = (Number) result;
             Integer value = num.intValue();

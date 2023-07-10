@@ -1,7 +1,7 @@
 package com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice;
 
-import com.example.testframeworkwi2020c.CodeRunnerBackend;
-import com.example.testframeworkwi2020c.TestController;
+import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
+import com.example.testframeworkwi2020c.CoreSystem.TestController;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
@@ -19,8 +19,8 @@ public class UnfairDiceTester {
 
     public TestResult<Integer> testGetNumber() throws Exception { //Test ob getNumber() ein Integer zurück gibt
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        TestController.invokeMethodByName(objectList,className,"roll");
-        Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getNumber");
 
         if (result instanceof Integer) {
             return new TestResult<>(true,(Integer) result);
@@ -32,6 +32,8 @@ public class UnfairDiceTester {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         TestController.invokeMethodByName(objectList,className,"roll");
         Object result = TestController.invokeMethodByName(objectList,className,"getNumber");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
+        Object reslut = CodeRunnerBackend.invokeMethodByName(objectList,className,"getNumber");
 
         Number number = (Number) result;
         Integer intnumber = number.intValue();
