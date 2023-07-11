@@ -41,7 +41,7 @@ public class CalculatorTester {
         return new TestResult<>(false, intValue);
     }
 
-    // Test der Methode add()
+    // Test der Methode mul()
     public TestResult<Integer> testMul() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"mul", new Object[]{3, 5}, new Class[]{int.class, int.class});
@@ -53,7 +53,7 @@ public class CalculatorTester {
         return new TestResult<>(false, intValue);
     }
 
-    // Test der Methode sub()
+    // Test der Methode div()
     public TestResult<Integer> testDiv() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"div", new Object[]{12, 3}, new Class[]{int.class, int.class});
