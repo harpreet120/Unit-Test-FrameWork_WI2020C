@@ -2,7 +2,6 @@ package com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_
 
 import com.example.testframeworkwi2020c.testSammlung.Emojis;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü08.FastCarTester;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.Ü02.MainTester;
 
 public class T05_DAK_Ü02_Controller {
