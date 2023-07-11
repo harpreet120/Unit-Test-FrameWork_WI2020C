@@ -5,21 +5,9 @@ import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü07_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü08_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
-import javafx.util.Pair;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Optional;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -34,6 +22,10 @@ public class TestController implements ITester{
                 return testTrain(jarFilePath);
             case "04_OOP_Ü07":
                 return testDiscs(jarFilePath);
+            case "04_OOP_Ü08":
+                return testCar(jarFilePath);
+            case "05_Datentypen_Ü02":
+                return testMainÜ02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -87,6 +79,8 @@ public class TestController implements ITester{
         try {
             textAnUser += controller.testCircle(jarFilePath);
             textAnUser += controller.testQuadrat(jarFilePath);
+            textAnUser += "\nDas Interface 'IFigure' kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,6 +103,7 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
+
     // Tests für die Übungsaufgabe OOP_Übung07
     // Weitergabe des "Text an User"
     public String testDiscs(String jarFilePath){
@@ -124,6 +119,31 @@ public class TestController implements ITester{
         textAnUser+= "\n";
         textAnUser += "\nDas Interface \"IDisc\" kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
         textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+    // Tests für die Übungsaufgabe OOP_Übung08
+    // Weitergabe des "Text an User"
+    public String testCar(String jarFilePath){
+        String textAnUser = "";
+        T04_OOP_Ü08_Controller controller = new T04_OOP_Ü08_Controller();
+        try {
+            textAnUser += controller.testFastCar(jarFilePath);
+            textAnUser += controller.testFutureCar(jarFilePath);
+            textAnUser += "\nDie abstrakte Klasse 'Car' und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe OOP_Übung08
+    // Weitergabe des "Text an User"
+    public String testMainÜ02(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü02_Controller controller = new T05_DAK_Ü02_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return textAnUser;
     }
 }
