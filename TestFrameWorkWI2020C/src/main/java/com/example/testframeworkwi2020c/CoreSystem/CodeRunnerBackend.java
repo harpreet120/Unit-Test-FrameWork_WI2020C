@@ -4,6 +4,7 @@ import javafx.util.Pair;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -97,6 +98,26 @@ public class CodeRunnerBackend {
                 return method.invoke(object, methodArgs);
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
+            }
+        } else {
+            System.out.println("Object not found for class name: " + className);
+        }
+        return null;
+    }
+
+    public static Object getVariableValue(List<Pair<String, Object>> classObjects, String className, String variableName) {
+        Optional<Object> optionalObject = classObjects.stream()
+                .filter(pair -> pair.getKey().equals(className))
+                .map(Pair::getValue)
+                .findFirst();
+        if (optionalObject.isPresent()) {
+            Object object = optionalObject.get();
+            try {
+                Field field = object.getClass().getDeclaredField(variableName);
+                field.setAccessible(true);
+                return field.get(object);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                throw new RuntimeException("Error accessing variable " + variableName + " in object of class " + className, e);
             }
         } else {
             System.out.println("Object not found for class name: " + className);
