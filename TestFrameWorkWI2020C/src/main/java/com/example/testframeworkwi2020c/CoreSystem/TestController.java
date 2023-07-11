@@ -4,6 +4,7 @@ import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Cont
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü07_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü08_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü02_Controller;
@@ -19,6 +20,8 @@ public class TestController implements ITester{
                 return testFigure(jarFilePath);
             case "04_OOP_Ü06":
                 return testTrain(jarFilePath);
+            case "04_OOP_Ü07":
+                return testDiscs(jarFilePath);
             case "04_OOP_Ü08":
                 return testCar(jarFilePath);
             case "05_Datentypen_Ü02":
@@ -100,6 +103,22 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
+
+    // Tests für die Übungsaufgabe OOP_Übung07
+    // Weitergabe des "Text an User"
+    public String testDiscs(String jarFilePath){
+        String textAnUser = "";
+        T04_OOP_Ü07_Controller controller = new T04_OOP_Ü07_Controller();
+        try {
+            textAnUser += controller.testDVD(jarFilePath);
+            textAnUser += "\n";
+            textAnUser += controller.testBluray(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        textAnUser+= "\n";
+        textAnUser += "\nDas Interface \"IDisc\" kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+        textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
     // Tests für die Übungsaufgabe OOP_Übung08
     // Weitergabe des "Text an User"
     public String testCar(String jarFilePath){
