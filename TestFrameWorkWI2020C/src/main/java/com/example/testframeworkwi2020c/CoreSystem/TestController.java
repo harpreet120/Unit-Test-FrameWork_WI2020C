@@ -9,6 +9,7 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü08_Contro
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü02_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü03_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü04_Controller;
 
 
 public class TestController implements ITester{
@@ -29,6 +30,8 @@ public class TestController implements ITester{
                 return testMainÜ02(jarFilePath);
             case "05_Datentypen_Ü03":
                 return testFigureExtended(jarFilePath);
+            case "05_Datentypen_Ü04":
+                return testCalculator(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -124,6 +127,7 @@ public class TestController implements ITester{
         textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
         return textAnUser;
     }
+
     // Tests für die Übungsaufgabe OOP_Übung08
     // Weitergabe des "Text an User"
     public String testCar(String jarFilePath){
@@ -161,6 +165,19 @@ public class TestController implements ITester{
             textAnUser += controller.testKreis(jarFilePath);
             textAnUser += controller.testQuadrat(jarFilePath);
             textAnUser += "\nDas Interface 'IFigure' kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe 04 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Weitergabe des "Text an User"
+    public String testCalculator(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü04_Controller controller = new T05_DAK_Ü04_Controller();
+        try {
+            textAnUser += controller.testCalculator(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
