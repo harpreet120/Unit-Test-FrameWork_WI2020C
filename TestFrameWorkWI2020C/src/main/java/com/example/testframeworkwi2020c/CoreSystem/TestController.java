@@ -6,6 +6,7 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Contro
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü08_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -20,6 +21,8 @@ public class TestController implements ITester{
                 return testTrain(jarFilePath);
             case "04_OOP_Ü08":
                 return testCar(jarFilePath);
+            case "05_Datentypen_Ü02":
+                return testMainÜ02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -106,6 +109,19 @@ public class TestController implements ITester{
             textAnUser += controller.testFastCar(jarFilePath);
             textAnUser += controller.testFutureCar(jarFilePath);
             textAnUser += "\nDie abstrakte Klasse 'Car' und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe OOP_Übung08
+    // Weitergabe des "Text an User"
+    public String testMainÜ02(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü02_Controller controller = new T05_DAK_Ü02_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
