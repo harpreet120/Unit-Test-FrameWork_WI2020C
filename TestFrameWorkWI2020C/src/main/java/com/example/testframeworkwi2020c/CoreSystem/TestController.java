@@ -109,7 +109,7 @@ public class TestController implements ITester{
 
     // Tests für die Übungsaufgabe OOP_Übung07
     // Weitergabe des "Text an User"
-    public String testDiscs(String jarFilePath){
+    public String testDiscs(String jarFilePath) {
         String textAnUser = "";
         T04_OOP_Ü07_Controller controller = new T04_OOP_Ü07_Controller();
         try {
@@ -119,9 +119,11 @@ public class TestController implements ITester{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        textAnUser+= "\n";
+        textAnUser += "\n";
         textAnUser += "\nDas Interface \"IDisc\" kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
         textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+        return textAnUser;
+    }
     // Tests für die Übungsaufgabe OOP_Übung08
     // Weitergabe des "Text an User"
     public String testCar(String jarFilePath){
