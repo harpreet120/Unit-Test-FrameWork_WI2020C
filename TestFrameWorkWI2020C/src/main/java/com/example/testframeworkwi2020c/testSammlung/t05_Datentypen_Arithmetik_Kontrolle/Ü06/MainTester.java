@@ -33,15 +33,17 @@ public class MainTester {
         String output = outputStreamCaptor.toString();
 
         String[] words = output.split("\\s+"); // Aufteilen des Texts in Wörter
+        output = output.replaceAll("\n", ", ");
+        output = output.replaceAll(", $", "");
         for (String word : words) {
             number = Integer.parseInt(word);
             if(number < 30 || number > 100){
-                return new TestResult<>(false, outputStreamCaptor.toString().replaceAll("\n", ", ").trim());
+                return new TestResult<>(false, output.trim());
             }
         }
         if (result == null && breakNumbers.contains(""+number)) {
             return new TestResult<>(true, null);
         }
-        return new TestResult<>(false, outputStreamCaptor.toString().replaceAll("\n", ", ").trim());
+        return new TestResult<>(false, output.trim());
     }
 }
