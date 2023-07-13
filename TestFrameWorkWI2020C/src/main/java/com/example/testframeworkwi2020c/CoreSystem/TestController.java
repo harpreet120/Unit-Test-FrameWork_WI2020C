@@ -11,6 +11,7 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü03_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü01_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü04_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -35,6 +36,8 @@ public class TestController implements ITester{
                 return testCalculator(jarFilePath);
             case "06_Strings_Ü01":
                 return testMainÜ01String(jarFilePath);
+            case "06_Strings_Ü02":
+                return testMainÜ02String(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -193,6 +196,19 @@ public class TestController implements ITester{
         T06_Strings_Ü01_Controller controller = new T06_Strings_Ü01_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe 02 aus Strings
+    // Weitergabe des "Text an User"
+    public String testMainÜ02String(String jarFilePath){
+        String textAnUser = "";
+        T06_Strings_Ü02_Controller controller = new T06_Strings_Ü02_Controller();
+        try {
+            textAnUser += controller.testDice(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
