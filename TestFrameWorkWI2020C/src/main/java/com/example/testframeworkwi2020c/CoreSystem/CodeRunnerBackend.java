@@ -17,7 +17,15 @@ import java.util.jar.JarFile;
 
 public class CodeRunnerBackend {
 
+    /**
+     * Durchsucht eine Jar-Datei nach Klassen und instanziiert diese. Die instanziierten Klassen werden dann in einer Liste zurückgegeben.
+     *
+     * @param jarFilePath Der Dateipfad zur Jar-Datei.
+     * @return Eine Liste von Klassen-Objekt-Paaren.
+     * @throws Exception Falls ein Fehler beim Durchsuchen der Jar-Datei oder bei der Instanziierung der Klassen auftritt.
+     */
     public static List<Pair<String, Object>> jarTest(String jarFilePath) throws Exception {
+        // Erstellt eine Liste, um die Objekte zu speichern, die in der Jar-Datei gefunden wurden.
         List<Pair<String, Object>> objects = new ArrayList<>();
 
         // Laden der Jar-Datei
@@ -52,7 +60,19 @@ public class CodeRunnerBackend {
         return objects;
     }
 
+    /**
+     * Ruft eine Methode mit dem angegebenen Namen auf einem Objekt in der Liste von Klassen-Objekt-Paaren auf.
+     *
+     * @param classObjects  Die Liste von Klassen-Objekt-Paaren.
+     * @param className     Der Name der Klasse des Objekts.
+     * @param methodName    Der Name der Methode, die aufgerufen werden soll.
+     * @param methodArgs    Die Argumente, die der Methode übergeben werden sollen.
+     * @param parameterTypes Die Parameter-Typen der Methode.
+     * @return Das Ergebnis der aufgerufenen Methode.
+     * @throws RuntimeException Falls ein Fehler beim Aufrufen der Methode auftritt.
+     */
     public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object[] methodArgs, Class<?>[] parameterTypes) {
+        // Sucht das Objekt mit dem angegebenen Klassennamen in der Liste
         Optional<Object> optionalObject = classObjects.stream()
                 .filter(pair -> pair.getKey().equals(className))
                 .map(Pair::getValue)
@@ -60,10 +80,10 @@ public class CodeRunnerBackend {
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
             try {
-                // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
+                // Holt die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
                 Method method = object.getClass().getMethod(methodName, parameterTypes);
 
-                // Rufe die Methode auf dem Objekt mit den übergebenen Argumenten auf
+                // Ruft die Methode auf dem Objekt mit den übergebenen Argumenten auf
                 return method.invoke(object, methodArgs);
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
@@ -74,7 +94,18 @@ public class CodeRunnerBackend {
         return null;
     }
 
+    /**
+     * Ruft eine Methode mit dem angegebenen Namen auf einem Objekt in der Liste von Klassen-Objekt-Paaren auf.
+     *
+     * @param classObjects Die Liste von Klassen-Objekt-Paaren.
+     * @param className    Der Name der Klasse des Objekts.
+     * @param methodName   Der Name der Methode, die aufgerufen werden soll.
+     * @param methodArgs   Die Argumente, die der Methode übergeben werden sollen.
+     * @return Das Ergebnis der aufgerufenen Methode.
+     * @throws RuntimeException Falls ein Fehler beim Aufrufen der Methode auftritt.
+     */
     public static Object invokeMethodByName(List<Pair<String, Object>> classObjects, String className, String methodName, Object... methodArgs) {
+        // Sucht das Objekt mit dem angegebenen Klassennamen in der Liste
         Optional<Object> optionalObject = classObjects.stream()
                 .filter(pair -> pair.getKey().equals(className))
                 .map(Pair::getValue)
@@ -90,10 +121,10 @@ public class CodeRunnerBackend {
                     }
                 }
 
-                // Hole die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
+                // Holt die entsprechende Methode basierend auf dem Methodennamen und den Parameter-Typen
                 Method method = object.getClass().getMethod(methodName, parameterTypes);
 
-                // Rufe die Methode auf dem Objekt mit den übergebenen Argumenten auf
+                // Ruft die Methode auf dem Objekt mit den übergebenen Argumenten auf
                 return method.invoke(object, methodArgs);
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException("Error invoking method " + methodName + " on object of class " + className, e);
