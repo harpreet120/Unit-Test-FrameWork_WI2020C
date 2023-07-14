@@ -37,6 +37,8 @@ public class TestController implements ITester{
                 return testMainDAKÜ11(jarFilePath);
             case "05_Datentypen_Ü12":
                 return testExponentiator(jarFilePath);
+            case "05_Datentypen_Ü14":
+                return testKonto(jarFilePath);
             case "06_Strings_Ü01":
                 return testMainÜ01String(jarFilePath);
             case "06_Strings_Ü02":
@@ -219,7 +221,7 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
-    // Tests für die Übungsaufgabe 06 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Tests für die Übungsaufgabe 11 aus Kapitel Datentypen, Arithmetik und Kontrolle
     // Weitergabe des "Text an User"
     public String testMainDAKÜ11(String jarFilePath){
         String textAnUser = "";
@@ -232,13 +234,28 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
-    // Tests für die Übungsaufgabe 06 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Tests für die Übungsaufgabe 12 aus Kapitel Datentypen, Arithmetik und Kontrolle
     // Weitergabe des "Text an User"
     public String testExponentiator(String jarFilePath){
         String textAnUser = "";
         T05_DAK_Ü12_Controller controller = new T05_DAK_Ü12_Controller();
         try {
             textAnUser += controller.testExponentiator(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe 14 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Weitergabe des "Text an User"
+    public String testKonto(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü14_Controller controller = new T05_DAK_Ü14_Controller();
+        try {
+            textAnUser += controller.testGiroKonto(jarFilePath);
+            textAnUser += controller.testGeldMarktKonto(jarFilePath);
+            textAnUser += controller.testTagesGeldKonto(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
