@@ -4,6 +4,7 @@ import javafx.util.Pair;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -44,6 +45,54 @@ public class CodeRunnerBackend {
                             // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste
                             String simpleClassName = clazz.getSimpleName();
                             objects.add(new Pair<>(simpleClassName, instance));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+        }
+
+        return objects;
+    }
+
+    public static List<Pair<String, Object>> jarTest(String jarFilePath,String classNameParm, Class[] constructorParameterTypes, Object[] constructorParameters) throws Exception {
+        // Erstellt eine Liste, um die Objekte zu speichern, die in der Jar-Datei gefunden wurden.
+        List<Pair<String, Object>> objects = new ArrayList<>();
+
+        // Laden der Jar-Datei
+        try (JarFile jarFile = new JarFile(jarFilePath)) {
+            // Erstellen eines URLClassLoaders mit der Jar-Datei
+            URL[] urls = {new URL("jar:file:" + jarFilePath + "!/")};
+            ClassLoader classLoader = URLClassLoader.newInstance(urls);
+            // Durchsuchen aller Klassen in der Jar-Datei
+            jarFile.stream()
+                    .filter(entry -> entry.getName().endsWith(".class"))
+                    .forEach(entry -> {
+                        try {
+                            String className = entry.getName().replace("/", ".").replace(".class", "");
+                            // Laden der Klasse
+                            Class<?> clazz = classLoader.loadClass(className);
+                            // Überprüfen, ob die Klasse abstrakt ist
+                            if (java.lang.reflect.Modifier.isAbstract(clazz.getModifiers())) {
+                                System.out.println("Die Klasse " + className + " ist abstrakt und kann nicht instanziiert werden.");
+                                return;
+                            }
+                            // Überprüfen, ob der Konstruktor Parameter hat
+                            if (classNameParm.equals(className)) {
+                                // Laden des Konstruktors mit den angegebenen Parametertypen
+                                Constructor<?> constructor = clazz.getDeclaredConstructor(constructorParameterTypes);
+                                constructor.setAccessible(true);
+                                // Erstellen einer Instanz der Klasse mit den angegebenen Parametern
+                                Object instance = constructor.newInstance(constructorParameters);
+                                // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste
+                                String simpleClassName = clazz.getSimpleName();
+                                objects.add(new Pair<>(simpleClassName, instance));
+                            } else {
+                                // Erstellen einer Instanz der Klasse ohne Parameter
+                                Object instance = clazz.getDeclaredConstructor().newInstance();
+                                // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste
+                                String simpleClassName = clazz.getSimpleName();
+                                objects.add(new Pair<>(simpleClassName, instance));
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -123,6 +172,25 @@ public class CodeRunnerBackend {
             System.out.println("Object not found for class name: " + className);
         }
         return null;
+    }
+
+    public static void setVariableValue(List<Pair<String, Object>> classObjects, String className, String variableName, Object newValue) {
+        Optional<Object> optionalObject = classObjects.stream()
+                .filter(pair -> pair.getKey().equals(className))
+                .map(Pair::getValue)
+                .findFirst();
+        if (optionalObject.isPresent()) {
+            Object object = optionalObject.get();
+            try {
+                Field field = object.getClass().getDeclaredField(variableName);
+                field.setAccessible(true);
+                field.set(object, newValue);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                throw new RuntimeException("Error setting variable " + variableName + " in object of class " + className, e);
+            }
+        } else {
+            System.out.println("Object not found for class name: " + className);
+        }
     }
 
     public static Object getObjectByClassName(List<Pair<String, Object>> objectList, String className) {
