@@ -2,11 +2,7 @@ package com.example.testframeworkwi2020c.CoreSystem;
 
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü05_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü06_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü07_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_Ü08_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t04_OOP.T04_OOP_ü04_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.*;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü01_Controller;
 
@@ -37,6 +33,8 @@ public class TestController implements ITester{
                 return testFibonacci(jarFilePath);
             case "05_Datentypen_Ü11":
                 return testMainDAKÜ11(jarFilePath);
+            case "05_Datentypen_Ü12":
+                return testExponentiator(jarFilePath);
             case "06_Strings_Ü01":
                 return testMainÜ01String(jarFilePath);
             case "X-I_unfair_dice":
@@ -224,6 +222,19 @@ public class TestController implements ITester{
         T05_DAK_Ü11_Controller controller = new T05_DAK_Ü11_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe 06 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Weitergabe des "Text an User"
+    public String testExponentiator(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü12_Controller controller = new T05_DAK_Ü12_Controller();
+        try {
+            textAnUser += controller.testExponentiator(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
