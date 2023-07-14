@@ -14,7 +14,11 @@ public class T06_Strings_Ü02_Controller {
             textAnUser += "\n"+ Emojis.RICHTIG.getEmoji()+" Die Methode roll() wurde erfolgreich getestet.";
         } else {
             if (testResult.getReturnValue().matches("\\d+")) {
-                textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+" Die Methode roll() hat noch Fehler. Es soll nur die Zahlen von 1 bis 'edges' im System.out.println() ausgegeben werden. Aktuell wird \""+ testResult.getReturnValue()+ "\" ausgegeben.";
+                if (Integer.parseInt(testResult.getReturnValue())<1 || Integer.parseInt(testResult.getReturnValue()) > 10){
+                    textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+" Die Methode roll() hat noch Fehler. Es soll nur die Zahlen von 1 bis 'edges' im System.out.println() ausgegeben werden. Aktuell wird \""+ testResult.getReturnValue()+ "\" ausgegeben.";
+                } else{
+                    textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+" Die Methode roll() hat noch Fehler. Es soll nur die Zahlen von 1 bis 'edges' im System.out.println() ausgegeben werden. Aktuell wird nicht \""+ testResult.getReturnValue()+ "\" ausgegeben, obwohl 10 als Input verwendet wurde.";
+                }
             } else {
                 textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+" Die Methode roll() hat noch Fehler. Es soll \"Sie haben X Augen gewürfelt\" im System.out.println() ausgegeben werden. Aktuell wird \""+ testResult.getReturnValue()+ "\" ausgegeben.";
             }

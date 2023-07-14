@@ -49,6 +49,13 @@ public class DiceTester {
             return new TestResult<>(false,outputStreamCaptor.toString().trim());
         }
 
+        // Überprüfe, ob 8 Zahlen von 1 bis 10 mindestens einmal vorgekommen sind
+        for (int i = 0; i < numbers.length; i++) {
+            if (!numbers[i]) {
+                return new TestResult<>(false,""+(i+1));
+            }
+        }
+
         return new TestResult<>(true,null);
     }
 }
