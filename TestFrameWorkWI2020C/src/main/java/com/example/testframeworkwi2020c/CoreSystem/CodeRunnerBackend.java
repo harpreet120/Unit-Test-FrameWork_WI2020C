@@ -54,7 +54,7 @@ public class CodeRunnerBackend {
         return objects;
     }
 
-    public static List<Pair<String, Object>> jarTest(String jarFilePath, Class<?>[] constructorParameterTypes, Object[] constructorParameters) throws Exception {
+    public static List<Pair<String, Object>> jarTest(String jarFilePath,String classNameParm, Class[] constructorParameterTypes, Object[] constructorParameters) throws Exception {
         // Erstellt eine Liste, um die Objekte zu speichern, die in der Jar-Datei gefunden wurden.
         List<Pair<String, Object>> objects = new ArrayList<>();
 
@@ -77,9 +77,10 @@ public class CodeRunnerBackend {
                                 return;
                             }
                             // Überprüfen, ob der Konstruktor Parameter hat
-                            if (constructorParameterTypes.length > 0) {
+                            if (classNameParm.equals(className)) {
                                 // Laden des Konstruktors mit den angegebenen Parametertypen
-                                Constructor<?> constructor = clazz.getConstructor(constructorParameterTypes);
+                                Constructor<?> constructor = clazz.getDeclaredConstructor(constructorParameterTypes);
+                                constructor.setAccessible(true);
                                 // Erstellen einer Instanz der Klasse mit den angegebenen Parametern
                                 Object instance = constructor.newInstance(constructorParameters);
                                 // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste

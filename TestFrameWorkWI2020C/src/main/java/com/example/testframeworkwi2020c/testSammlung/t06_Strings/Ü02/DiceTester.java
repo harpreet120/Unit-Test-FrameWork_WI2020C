@@ -23,15 +23,32 @@ public class DiceTester {
     }
 
     public TestResult<String> testRoll() throws Exception {
-        objectList = CodeRunnerBackend.jarTest(jarFilePath, new Class <?>[]{int.class},new Object[]{10});
+
+        //Test auf richtigkeit der Zahlen
+        objectList = CodeRunnerBackend.jarTest(jarFilePath,"Dice", new Class[]{int.class},new Object[]{10});
+        boolean[] numbers = new boolean[10];
+        for (int i = 0; i < 200; i++) {
+            outputStreamCaptor = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStreamCaptor));
+            CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
+            int temp = Integer.parseInt(outputStreamCaptor.toString().replaceAll("\\D", ""));
+            System.setOut(standardOut);
+            if (temp < 1 || temp > 10) {
+                return new TestResult<>(false,""+temp);
+            }
+            numbers[temp -1] = true;
+        }
+
+        //Test auf richtigkeit des Strings
+        objectList = CodeRunnerBackend.jarTest(jarFilePath,"Dice", new Class[]{int.class},new Object[]{1});
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
-        //System.out.println(CodeRunnerBackend.getVariableValue(objectList,className,"temp"));
         System.setOut(standardOut);
-        //if (outputStreamCaptor.toString().contains("playing the blueray")) {
-        //    return new TestResult<>(true,null);
-        //}
-        return new TestResult<>(false,outputStreamCaptor.toString().trim());
+        if (!outputStreamCaptor.toString().contains("Sie haben 1 Augen gewürfelt")) {
+            return new TestResult<>(false,outputStreamCaptor.toString().trim());
+        }
+
+        return new TestResult<>(true,null);
     }
 }
