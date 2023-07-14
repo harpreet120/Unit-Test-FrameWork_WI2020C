@@ -31,10 +31,10 @@ public class UnfairDiceTester {
     public TestResult<Integer> testZahl() throws Exception { //Test muss eine 6 zurückgeben
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"roll");
-        Object reslut = CodeRunnerBackend.invokeMethodByName(objectList,className,"getNumber");
-
-        Number number = (Number) reslut;
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getNumber");
+        Number number = (Number) result;
         Integer intnumber = number.intValue();
+
         if (intnumber == 6) {
             return new TestResult<>(true,intnumber);
         }
