@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c.testSammlung.t07_Arrays.Ü01;
+package com.example.testframeworkwi2020c.testSammlung.t07_Arrays.Ü02;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTesterArr1 {
+public class MainTesterArr2 {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
     String className = "Main";
@@ -20,7 +20,7 @@ public class MainTesterArr1 {
      * Konstruktor
      * @param jarFilePath an jarTest weitergeben
      */
-    public MainTesterArr1(String jarFilePath) { this.jarFilePath = jarFilePath; }
+    public MainTesterArr2(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     /***
      *  Test der Methode main()
@@ -34,8 +34,9 @@ public class MainTesterArr1 {
         CodeRunnerBackend.invokeMethodByName(objectList,className,"main", new Object[]{new String[]{}}, new Class[]{String[].class});
         System.setOut(standardOut);
 
-        //Prüfen wie viele Zahlen und in welchem Bereich diese liegen
+        //Prüfung, ob die 10 Zahlen in aufsteigender Reihenfolge sind
         int number = 0;
+        int temp = -10000;
         int counter = 0;
         String output = outputStreamCaptor.toString();
         output = output.replaceAll("\r\n", ", ");
@@ -44,9 +45,10 @@ public class MainTesterArr1 {
         String[] words = output.split(", "); // Aufteilen des Textes
         for (String word : words) {
             number = Integer.parseInt(word);
-            if(number > 10 || number < 0 || counter > 9){
+            if(number < temp || counter > 9){
                 return new TestResult<>(false, output.trim());
             }
+            temp = number;
             counter++;
         }
         return new TestResult<>(true, null);

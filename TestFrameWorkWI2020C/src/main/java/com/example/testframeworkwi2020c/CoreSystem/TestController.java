@@ -8,6 +8,7 @@ import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü0
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü04_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü02_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü01_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -46,6 +47,8 @@ public class TestController implements ITester{
                 return testMainÜ02String(jarFilePath);
             case "07_Arrays_Ü01":
                 return testMainArr01(jarFilePath);
+            case "07_Arrays_Ü02":
+                return testMainArr02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -291,11 +294,30 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
-    // Tests für die Übungsaufgabe 02 aus Strings
-    // Weitergabe des "Text an User"
+    /***
+     * Tests für die Übungsaufgabe 01 aus Arrays
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
     public String testMainArr01(String jarFilePath){
         String textAnUser = "";
         T07_Arrays_Ü01_Controller controller = new T07_Arrays_Ü01_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 02 aus Arrays
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainArr02(String jarFilePath){
+        String textAnUser = "";
+        T07_Arrays_Ü02_Controller controller = new T07_Arrays_Ü02_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
