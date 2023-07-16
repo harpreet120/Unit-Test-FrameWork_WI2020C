@@ -9,6 +9,7 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü02_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü01_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü02_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü03_Controller;
 
 
 public class TestController implements ITester{
@@ -45,6 +46,8 @@ public class TestController implements ITester{
                 return testMainÜ01String(jarFilePath);
             case "06_Strings_Ü02":
                 return testMainÜ02String(jarFilePath);
+            case "06_Strings_Ü03":
+                return testStringTester(jarFilePath);
             case "07_Arrays_Ü01":
                 return testMainArr01(jarFilePath);
             case "07_Arrays_Ü02":
@@ -288,6 +291,23 @@ public class TestController implements ITester{
         T06_Strings_Ü02_Controller controller = new T06_Strings_Ü02_Controller();
         try {
             textAnUser += controller.testDice(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+
+    /***
+     * Tests für die Übungsaufgabe 03 aus Strings
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testStringTester(String jarFilePath){
+        String textAnUser = "";
+        T06_Strings_Ü03_Controller controller = new T06_Strings_Ü03_Controller();
+        try {
+            textAnUser += controller.testStringTester(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
