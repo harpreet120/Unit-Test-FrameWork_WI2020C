@@ -192,18 +192,29 @@ public class CodeRunnerBackend {
                 .findFirst();
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
-            try {
-                Field field = object.getClass().getDeclaredField(variableName);
-                field.setAccessible(true);
-                return field.get(object);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                throw new RuntimeException("Error accessing variable " + variableName + " in object of class " + className, e);
+            Class<?> currentClass = object.getClass();
+
+            while (currentClass != null) {
+                try {
+                    Field field = currentClass.getDeclaredField(variableName);
+                    field.setAccessible(true);
+                    return field.get(object);
+                } catch (NoSuchFieldException e) {
+                    // Field not found in the current class, continue to superclass
+                    currentClass = currentClass.getSuperclass();
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Error accessing variable " + variableName + " in object of class " + className, e);
+                }
             }
+
+            throw new RuntimeException("Variable " + variableName + " not found in class or its superclasses: " + className);
         } else {
             System.out.println("Object not found for class name: " + className);
         }
+
         return null;
     }
+
 
     public static void setVariableValue(List<Pair<String, Object>> classObjects, String className, String variableName, Object newValue) {
         Optional<Object> optionalObject = classObjects.stream()
@@ -212,12 +223,20 @@ public class CodeRunnerBackend {
                 .findFirst();
         if (optionalObject.isPresent()) {
             Object object = optionalObject.get();
-            try {
-                Field field = object.getClass().getDeclaredField(variableName);
-                field.setAccessible(true);
-                field.set(object, newValue);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                throw new RuntimeException("Error setting variable " + variableName + " in object of class " + className, e);
+            Class<?> currentClass = object.getClass();
+
+            while (currentClass != null) {
+                try {
+                    Field field = currentClass.getDeclaredField(variableName);
+                    field.setAccessible(true);
+                    field.set(object, newValue);
+                    return; // Variable erfolgreich gesetzt, Rückgabe aus der Methode
+                } catch (NoSuchFieldException e) {
+                    // Field nicht in der aktuellen Klasse gefunden, Suche in Superklasse fortsetzen
+                    currentClass = currentClass.getSuperclass();
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Error setting variable " + variableName + " in object of class " + className, e);
+                }
             }
         } else {
             System.out.println("Object not found for class name: " + className);

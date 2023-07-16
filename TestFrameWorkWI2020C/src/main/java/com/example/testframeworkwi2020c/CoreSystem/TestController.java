@@ -7,6 +7,8 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü01_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü04_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü02_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü01_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -37,10 +39,16 @@ public class TestController implements ITester{
                 return testMainDAKÜ11(jarFilePath);
             case "05_Datentypen_Ü12":
                 return testExponentiator(jarFilePath);
+            case "05_Datentypen_Ü14":
+                return testKonto(jarFilePath);
             case "06_Strings_Ü01":
                 return testMainÜ01String(jarFilePath);
             case "06_Strings_Ü02":
                 return testMainÜ02String(jarFilePath);
+            case "07_Arrays_Ü01":
+                return testMainArr01(jarFilePath);
+            case "07_Arrays_Ü02":
+                return testMainArr02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -219,7 +227,7 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
-    // Tests für die Übungsaufgabe 06 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Tests für die Übungsaufgabe 11 aus Kapitel Datentypen, Arithmetik und Kontrolle
     // Weitergabe des "Text an User"
     public String testMainDAKÜ11(String jarFilePath){
         String textAnUser = "";
@@ -232,13 +240,28 @@ public class TestController implements ITester{
         return textAnUser;
     }
 
-    // Tests für die Übungsaufgabe 06 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Tests für die Übungsaufgabe 12 aus Kapitel Datentypen, Arithmetik und Kontrolle
     // Weitergabe des "Text an User"
     public String testExponentiator(String jarFilePath){
         String textAnUser = "";
         T05_DAK_Ü12_Controller controller = new T05_DAK_Ü12_Controller();
         try {
             textAnUser += controller.testExponentiator(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    // Tests für die Übungsaufgabe 14 aus Kapitel Datentypen, Arithmetik und Kontrolle
+    // Weitergabe des "Text an User"
+    public String testKonto(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü14_Controller controller = new T05_DAK_Ü14_Controller();
+        try {
+            textAnUser += controller.testGiroKonto(jarFilePath);
+            textAnUser += controller.testGeldMarktKonto(jarFilePath);
+            textAnUser += controller.testTagesGeldKonto(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -265,6 +288,38 @@ public class TestController implements ITester{
         T06_Strings_Ü02_Controller controller = new T06_Strings_Ü02_Controller();
         try {
             textAnUser += controller.testDice(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 01 aus Arrays
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainArr01(String jarFilePath){
+        String textAnUser = "";
+        T07_Arrays_Ü01_Controller controller = new T07_Arrays_Ü01_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 02 aus Arrays
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainArr02(String jarFilePath){
+        String textAnUser = "";
+        T07_Arrays_Ü02_Controller controller = new T07_Arrays_Ü02_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
