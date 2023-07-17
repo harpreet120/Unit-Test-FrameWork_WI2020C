@@ -16,12 +16,20 @@ public class ExponentiatorTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert wird gesetzt
+     */
     public ExponentiatorTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode exponentiate()
+    /***
+     * Test der Methode exponentiate()
+     * @return Test erfolgreich J/N und ggf. output der Methode exponentiate()
+     * @throws Exception Handling wird weitergereicht
+     */
     public TestResult<String> testExponentiate() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        // mit outputStreamCaptor den Syso auslesen
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"exponentiate", new Object[]{6, 0}, new Class[]{int.class, int.class});

@@ -13,13 +13,20 @@ public class MainTester {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
     String className = "Main";
-    private final PrintStream standardOut = System.out;
+    private PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert setzen
+     */
     public MainTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode main()
+    /***
+     * Test der Methode main()
+     * @return Test erfolgreich J/N und ggf. output der Methode main()
+     * @throws Exception Handling wird an nächsthöhere Instanz weitergereicht
+     */
     public TestResult<Integer> testMain() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

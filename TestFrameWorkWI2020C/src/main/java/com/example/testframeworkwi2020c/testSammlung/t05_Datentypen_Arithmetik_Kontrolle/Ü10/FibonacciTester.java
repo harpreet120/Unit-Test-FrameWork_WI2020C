@@ -16,10 +16,18 @@ public class FibonacciTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert wird gesetzt
+     */
     public FibonacciTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode folge()
+    /***
+     * Test der Methode folge()
+     * Hinweis: es wird nur der Output überprüft und nicht ob dieser rekursiv erzeugt wird
+     * @return Test erfolgreich J/N und ggf. output der Methode folge()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<String> testFolge() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -37,7 +45,11 @@ public class FibonacciTester {
         return new TestResult<>(false, output.trim());
     }
 
-    // Test der Methode folge2()
+    /***
+     * Test der Methode folge2()
+     * @return Test erfolgreich J/N und ggf. output der Methode folge2()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<String> testFolge2() throws Exception {
         String fibonacci = "1, 1, 2, 3, 5, 8, 13, 21, 34, 55";
         objectList = CodeRunnerBackend.jarTest(jarFilePath);

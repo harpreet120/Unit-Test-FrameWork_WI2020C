@@ -17,10 +17,17 @@ public class GueterzugTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert festgelegt
+     */
     public GueterzugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode beladen()
+    /***
+     * Test der Methode beladen()
+     * @return Test erfolgreich J/N und ggf. output der Methode
+     * @throws Exception Handling wird weitergereicht
+     */
     public TestResult<String> testBeladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -35,7 +42,11 @@ public class GueterzugTester {
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
-    //Test der Methode entladen()
+    /***
+     * Test der Methode entladen()
+     * @return Test erfolgreich J/N und ggf. output der Methode
+     * @throws Exception Handling wird weitergereicht
+     */
     public TestResult<String> testEntladen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

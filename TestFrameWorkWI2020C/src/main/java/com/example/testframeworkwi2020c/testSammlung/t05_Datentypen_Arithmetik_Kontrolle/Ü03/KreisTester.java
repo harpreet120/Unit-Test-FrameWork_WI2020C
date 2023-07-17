@@ -16,10 +16,16 @@ public class KreisTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert gesetzt
+     */
     public KreisTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Hilfsmethode für das Setzen der Variable r bei Bedarf
+    /***
+     * Hilfsmethode für das Setzen der Variable r bei Bedarf
+     * @return Variablenwert von r
+     */
     public int setR()  {
         Object variableValue = CodeRunnerBackend.getVariableValue(objectList,className,"r");
         if(variableValue == null || (int)variableValue == 0){
@@ -31,7 +37,11 @@ public class KreisTester {
 
     }
 
-    // Test der Methode getArea()
+    /***
+     * Test der Methode getArea()
+     * @return Test erfolgreich J/N und ggf. output der Methode getArea()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<String> testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         int variableValue = setR();
@@ -46,7 +56,12 @@ public class KreisTester {
         return new TestResult<>(false, outputStreamCaptor.toString().trim()+" anstelle von "+areaValue);
     }
 
-    // Test der Methode getCircumference()
+
+    /***
+     * Test der Methode getCircumference()
+     * @return Test erfolgreich J/N und ggf. output der Methode getCircumference()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<String> testGetCircumference() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor= new ByteArrayOutputStream();

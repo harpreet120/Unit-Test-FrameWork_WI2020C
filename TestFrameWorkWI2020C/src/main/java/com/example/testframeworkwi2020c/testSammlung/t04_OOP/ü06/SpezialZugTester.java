@@ -17,10 +17,17 @@ public class SpezialZugTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath wird als Variablenwert festgelegt
+     */
     public SpezialZugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode sichern()
+    /***
+     * Test der Methode sichern()
+     * @return Test erfolgreich J/N und ggf. output des Benutzers
+     * @throws Exception handling weiterreichen
+     */
     public TestResult<String> testSichern() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));

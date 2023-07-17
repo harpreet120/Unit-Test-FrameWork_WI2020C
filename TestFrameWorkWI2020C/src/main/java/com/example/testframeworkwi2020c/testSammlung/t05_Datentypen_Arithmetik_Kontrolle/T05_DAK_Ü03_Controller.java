@@ -7,7 +7,12 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 
 public class T05_DAK_Ü03_Controller {
 
-    // Tests für die Klasse Kreis
+    /***
+     * Tests für die Klasse Kreis
+     * @param jarFilePath wird an Instanz der Klasse Kreis übergeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testKreis(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Kreis";
         KreisTester kreisTester = new KreisTester(jarFilePath);
@@ -31,7 +36,12 @@ public class T05_DAK_Ü03_Controller {
         return textAnUser;
     }
 
-    // Tests für die Klasse Quadrat
+    /***
+     * Tests für die Klasse Quadrat
+     * @param jarFilePath wird an Instanz der Klasse Quadrat übergeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testQuadrat(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Quadrat";
         QuadratTester quadratTester = new QuadratTester(jarFilePath);

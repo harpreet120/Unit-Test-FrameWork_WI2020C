@@ -6,7 +6,12 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.Ü10.FibonacciTester;
 
 public class T05_DAK_Ü10_Controller {
-    // Tests für die Klasse Fibonacci
+    /***
+     * Tests für die Klasse Fibonacci
+     * @param jarFilePath wird an Objekt der Klasse Fibonacci übergeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling an nächsthöhere Instanz
+     */
     public String testFibonacci(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Fibonacci";
         FibonacciTester fibonacciTester = new FibonacciTester(jarFilePath);

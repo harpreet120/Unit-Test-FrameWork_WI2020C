@@ -12,11 +12,17 @@ public class ZugTester {
     String jarFilePath;
     String className = "Zug";
 
-
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert wird gesetzt
+     */
     public ZugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode getWagons()
+    /***
+     * Test der Methode getWagons()
+     * @return Testergebnis erfolgreich J/N und ggf. output der Methode
+     * @throws Exception handling wird weitergegeben
+     */
     public TestResult<Integer> testGetWagons() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getWagons");

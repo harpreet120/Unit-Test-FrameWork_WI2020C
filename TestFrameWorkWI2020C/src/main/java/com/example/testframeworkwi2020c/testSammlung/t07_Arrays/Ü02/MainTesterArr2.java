@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.Ü06;
+package com.example.testframeworkwi2020c.testSammlung.t07_Arrays.Ü02;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
@@ -9,48 +9,48 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTester {
+public class MainTesterArr2 {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
     String className = "Main";
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
-    String breakNumbers = "35, 42, 49, 56, 63, 70, 77, 84, 91, 98";
 
     /***
      * Konstruktor
-     * @param jarFilePath Variablenwert setzen
+     * @param jarFilePath an jarTest weitergeben
      */
-    public MainTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
+    public MainTesterArr2(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     /***
-     * Test der Methode main()
-     * @return Test erfolgreich J/N und ggf. output der Methode main()
-     * @throws Exception Handling wird an nächsthöhere Instanz weitergereicht
+     *  Test der Methode main()
+     * @return TestResult<String>: Rückgabe an User
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergeleitet
      */
     public TestResult<String> testMain() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"main", new Object[]{new String[]{}}, new Class[]{String[].class});
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"main", new Object[]{new String[]{}}, new Class[]{String[].class});
         System.setOut(standardOut);
 
-        //Rückgabewert (null) und prüfen wie oft 'gerade'ausgegeben wird
+        //Prüfung, ob die 10 Zahlen in aufsteigender Reihenfolge sind
         int number = 0;
+        int temp = -10000;
+        int counter = 0;
         String output = outputStreamCaptor.toString();
-
-        String[] words = output.split("\\s+"); // Aufteilen des Texts in Wörter
-        output = output.replaceAll("\n", ", ");
+        output = output.replaceAll("\r\n", ", ");
         output = output.replaceAll(", $", "");
+
+        String[] words = output.split(", "); // Aufteilen des Textes
         for (String word : words) {
             number = Integer.parseInt(word);
-            if(number < 30 || number > 100){
+            if(number < temp || counter > 9){
                 return new TestResult<>(false, output.trim());
             }
+            temp = number;
+            counter++;
         }
-        if (result == null && breakNumbers.contains(""+number)) {
-            return new TestResult<>(true, null);
-        }
-        return new TestResult<>(false, output.trim());
+        return new TestResult<>(true, null);
     }
 }
