@@ -11,6 +11,7 @@ import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü01_
 import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü02_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü03_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü01_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü02_Controller;
 
 
 public class TestController implements ITester{
@@ -55,6 +56,8 @@ public class TestController implements ITester{
                 return testMainArr02(jarFilePath);
             case "08_User_Interaction_Ü01":
                 return testMainÜ01UserInteraction(jarFilePath);
+            case "08_User_Interaction_Ü02":
+                return testMainÜ02UserInteraction(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -357,6 +360,22 @@ public class TestController implements ITester{
     public String testMainÜ01UserInteraction(String jarFilePath){
         String textAnUser = "";
         T08_User_Interaction_Ü01_Controller controller = new T08_User_Interaction_Ü01_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 02 aus User_Interaction
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainÜ02UserInteraction(String jarFilePath){
+        String textAnUser = "";
+        T08_User_Interaction_Ü02_Controller controller = new T08_User_Interaction_Ü02_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
