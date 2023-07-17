@@ -6,7 +6,12 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 
 public class T05_DAK_Ü02_Controller {
 
-    // Tests für die Klasse Main
+    /***
+     * Tests für die Klasse Main
+     * @param jarFilePath wird an Instanz der Klasse MainTester übergeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an die nächsthöhere Ebene weitergereicht
+     */
     public String testMain(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Main";
         MainTester mainTester = new MainTester(jarFilePath);

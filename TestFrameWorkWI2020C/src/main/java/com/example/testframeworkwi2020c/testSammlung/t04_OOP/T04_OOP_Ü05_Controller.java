@@ -6,7 +6,12 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü05.CircleTester;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü05.QuadratTester;
 
 public class T04_OOP_Ü05_Controller {
-    // Tests für die Klasse Circle
+    /***
+     * Tests für die Klasse Circle
+     * @param jarFilePath wird bei der Instanziierung der Klasse CircleTester mitgegeben
+     * @return Ausgabe an den Benutzer (von der Klasse Circle)
+     * @throws Exception Handling wird an nächsthöhere Instanz weitergegeben
+     */
     public String testCircle(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tests für die Klasse Circle";
         CircleTester circleTester = new CircleTester(jarFilePath);
@@ -30,7 +35,12 @@ public class T04_OOP_Ü05_Controller {
         return textAnUser;
     }
 
-    // Tests für die Klasse Quadrat
+    /***
+     * Tests für die Klasse Quadrat
+     * @param jarFilePath wird bei der Instanziierung der Klasse CircleTester mitgegeben
+     * @return Ausgabe an den Benutzer (von der Klasse Quadrat)
+     * @throws Exception Handling wird an nächsthöhere Instanz weitergegeben
+     */
     public String testQuadrat(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tests für die Klasse Quadrat";
         QuadratTester quadratTester = new QuadratTester(jarFilePath);

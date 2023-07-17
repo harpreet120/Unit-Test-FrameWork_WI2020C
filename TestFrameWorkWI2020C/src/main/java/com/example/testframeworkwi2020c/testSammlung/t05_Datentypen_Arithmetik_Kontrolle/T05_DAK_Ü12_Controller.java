@@ -6,7 +6,12 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 
 
 public class T05_DAK_Ü12_Controller {
-    // Tests für die Klasse Exponentiator
+    /***
+     * Tests für die Klasse Exponentiator
+     * @param jarFilePath wird einem Objekt der Klasse ExponentiatorTester übergeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird weitergereicht
+     */
     public String testExponentiator(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Exponentiator";
         ExponentiatorTester exponentiatorTester = new ExponentiatorTester(jarFilePath);

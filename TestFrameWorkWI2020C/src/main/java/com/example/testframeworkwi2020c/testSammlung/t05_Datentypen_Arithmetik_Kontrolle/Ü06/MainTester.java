@@ -17,10 +17,17 @@ public class MainTester {
     private ByteArrayOutputStream outputStreamCaptor;
     String breakNumbers = "35, 42, 49, 56, 63, 70, 77, 84, 91, 98";
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert setzen
+     */
     public MainTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode main()
+    /***
+     * Test der Methode main()
+     * @return Test erfolgreich J/N und ggf. output der Methode main()
+     * @throws Exception Handling wird an nächsthöhere Instanz weitergereicht
+     */
     public TestResult<String> testMain() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

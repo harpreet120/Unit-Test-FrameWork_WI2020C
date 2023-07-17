@@ -12,10 +12,17 @@ public class CalculatorTester {
     String jarFilePath;
     String className = "Calculator";
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert wird gesetzt
+     */
     public CalculatorTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode add()
+    /***
+     * Test der Methode add()
+     * @return Test erfolgreich J/N und ggf. output der Methode add()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<Integer> testAdd() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"add", new Object[]{3, 5}, new Class[]{int.class, int.class});
@@ -27,7 +34,11 @@ public class CalculatorTester {
         return new TestResult<>(false, intValue);
     }
 
-    // Test der Methode sub()
+    /***
+     * Test der Methode sub()
+     * @return Test erfolgreich J/N und ggf. output der Methode sub()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<Integer> testSub() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"sub", new Object[]{5, 3}, new Class[]{int.class, int.class});
@@ -39,7 +50,11 @@ public class CalculatorTester {
         return new TestResult<>(false, intValue);
     }
 
-    // Test der Methode mul()
+    /***
+     * Test der Methode mul()
+     * @return Test erfolgreich J/N und ggf. output der Methode mul()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<Integer> testMul() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"mul", new Object[]{3, 5}, new Class[]{int.class, int.class});
@@ -51,7 +66,11 @@ public class CalculatorTester {
         return new TestResult<>(false, intValue);
     }
 
-    // Test der Methode div()
+    /***
+     * Test der Methode div()
+     * @return Test erfolgreich J/N und ggf. output der Methode div()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<Integer> testDiv() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"div", new Object[]{12, 3}, new Class[]{int.class, int.class});

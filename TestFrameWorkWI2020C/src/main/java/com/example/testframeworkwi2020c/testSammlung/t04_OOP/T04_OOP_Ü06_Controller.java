@@ -10,7 +10,12 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü06.ZugTester;
 
 public class T04_OOP_Ü06_Controller {
 
-    // Tests für die Klasse Zug
+    /***
+     * Tests für die Klasse Zug
+     * @param jarFilePath Wird an ein Objekt der Klasse Zugtester weitergegeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testZug(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Zug";
         ZugTester zugTester = new ZugTester(jarFilePath);
@@ -26,7 +31,12 @@ public class T04_OOP_Ü06_Controller {
         return textAnUser;
     }
 
-    // Tests für die Klasse Gueterzug
+    /***
+     * Tests für die Klasse Gueterzug
+     * @param jarFilePath Wird an ein Objekt der Klasse GueterzugTester weitergegeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testGueterzug(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Güterzug ";
         GueterzugTester zugTester = new GueterzugTester(jarFilePath);
@@ -49,7 +59,12 @@ public class T04_OOP_Ü06_Controller {
         return textAnUser;
     }
 
-    // Tests für die Klasse Spezialzug
+    /***
+     * Tests für die Klasse Spezialzug
+     * @param jarFilePath Wird an ein Objekt der Klasse SpezialZugTester weitergegeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testSpezialzug(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Tests für die Klasse Spezialzug ";
         SpezialZugTester spezialZugTester = new SpezialZugTester(jarFilePath);
@@ -65,7 +80,12 @@ public class T04_OOP_Ü06_Controller {
         return textAnUser;
     }
 
-    // Tests für die Klasse Personenzug
+    /***
+     * Tests für die Klasse Personenzug
+     * @param jarFilePath Wird an ein Objekt der Klasse PersonenzugTester weitergegeben
+     * @return Ausgabe an den Benutzer
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public String testPersonenzug(String jarFilePath) throws Exception {
         String textAnUser = "\nBeginn der Personenzug Tests";
         PersonenzugTester personenzugTester = new PersonenzugTester(jarFilePath);

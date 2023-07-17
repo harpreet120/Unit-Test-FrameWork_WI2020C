@@ -17,10 +17,17 @@ public class MainTester_DAK_U11 {
     private ByteArrayOutputStream outputStreamCaptor;
     String solution = "";
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert gesetzt
+     */
     public MainTester_DAK_U11(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode main()
+    /***
+     * Test der Methode main()
+     * @return Test erfolgreich J/N und ggf. output der Methode main()
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
+     */
     public TestResult<String> testMain() throws Exception {
         for(int i = 0; i <= 100; i++) {
             solution += i+" => ";
@@ -33,7 +40,6 @@ public class MainTester_DAK_U11 {
                 }
             }
         }
-
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
