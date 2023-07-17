@@ -16,11 +16,17 @@ public class FutureCarTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert wird gesetzt
+     */
     public FutureCarTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-
-    // Test der Methode open() von der abstrakten Elternklasse
+    /***
+     * Test der Methode open() von der abstrakten Elternklasse
+     * @return Test erfolgreich J/N und ggf. output der Methode open()
+     * @throws Exception Handling wird weitergereicht an nächsthöhere Ebene
+     */
     public TestResult<String> testOpen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -35,7 +41,11 @@ public class FutureCarTester {
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
-    // Test der Methode drive()
+    /***
+     * Test der Methode drive()
+     * @return Test erfolgreich J/N und ggf. output der Methode drive()
+     * @throws Exception Handling wird weitergereicht an nächsthöhere Ebene
+     */
     public TestResult<String> testDrive() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

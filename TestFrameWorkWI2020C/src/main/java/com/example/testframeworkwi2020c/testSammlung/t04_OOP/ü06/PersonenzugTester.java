@@ -17,10 +17,17 @@ public class PersonenzugTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath Variablenwert festgelegt
+     */
     public PersonenzugTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode essen()
+    /***
+     * Test der Methode essen()
+     * @return Testergebnisse erfolgreich J/N und ggf. output der getesteten Methode
+     * @throws Exception handling weiterreichen
+     */
     public TestResult<String> testEssen() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -35,7 +42,11 @@ public class PersonenzugTester {
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
-    // Test der Methode essen()
+    /***
+     * Test der Methode getWagons()
+     * @return Testergebnisse erfolgreich J/N und ggf. output der getesteten Methode
+     * @throws Exception handling weiterreichen
+     */
     public TestResult<Integer> testGetWagons() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

@@ -16,10 +16,17 @@ public class QuadratTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-    // Konstruktor
+    /***
+     * Konstruktor
+     * @param jarFilePath wird als Variable gesetzt
+     */
     public QuadratTester(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
-    // Test der Methode getArea()
+    /***
+     * Test der Methode getArea()
+     * @return Erfolgreiche Durchführung J/N + ggf. Output des Studierenden
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergegeben
+     */
     public TestResult<String> testGetArea() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor= new ByteArrayOutputStream();
@@ -32,7 +39,11 @@ public class QuadratTester {
         return new TestResult<>(false, outputStreamCaptor.toString().trim());
     }
 
-    // Test der Methode getCircumference()
+    /***
+     * Test der Methode getCircumference()
+     * @return Erfolgreiche Durchführung J/N + ggf. Output des Studierenden
+     * @throws Exception Handling wird an nächsthöhere Ebene weitergegeben
+     */
     public TestResult<String> testGetCircumference() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor= new ByteArrayOutputStream();
