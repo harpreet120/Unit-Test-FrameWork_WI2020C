@@ -22,6 +22,11 @@ public class DiceTester {
         this.jarFilePath = jarFilePath;
     }
 
+    /***
+     * Testet, ob das Programm alle angestrebten Integer bildet und die Korrektheit des Strings
+     * @return TestResult, ob der Test erfolgreich war oder nicht
+     * @throws Exception wenn eine Methode nicht funktioniert
+     */
     public TestResult<String> testRoll() throws Exception {
 
         //Test auf richtigkeit der Zahlen
@@ -39,7 +44,7 @@ public class DiceTester {
             numbers[temp -1] = true;
         }
 
-        //Test auf richtigkeit des Strings
+        //Test auf Korrektheit des Strings
         objectList = CodeRunnerBackend.jarTest(jarFilePath,"Dice", new Class[]{int.class},new Object[]{1});
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
