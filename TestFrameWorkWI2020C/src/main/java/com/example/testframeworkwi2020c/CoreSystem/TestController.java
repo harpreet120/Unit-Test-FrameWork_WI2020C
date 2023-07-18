@@ -42,6 +42,8 @@ public class TestController implements ITester{
                 return testMainDAKÜ11(jarFilePath);
             case "05_Datentypen_Ü12":
                 return testExponentiator(jarFilePath);
+            case "05_Datentypen_Ü13":
+                return testMainDAKÜ13(jarFilePath);
             case "05_Datentypen_Ü14":
                 return testKonto(jarFilePath);
             case "06_Strings_Ü01":
@@ -268,6 +270,22 @@ public class TestController implements ITester{
         T05_DAK_Ü12_Controller controller = new T05_DAK_Ü12_Controller();
         try {
             textAnUser += controller.testExponentiator(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 13 aus Kapitel Datentypen, Arithmetik und Kontrolle
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainDAKÜ13(String jarFilePath){
+        String textAnUser = "";
+        T05_DAK_Ü13_Controller controller = new T05_DAK_Ü13_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.Ü11;
+package com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.Ü13;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.testSammlung.TestResult;
@@ -8,8 +8,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class MainTester_DAK_U11 {
+public class MainTester_Ü13 {
     List<Pair<String, Object>> objectList = new ArrayList<>();
     String jarFilePath;
     String className = "Main";
@@ -21,7 +22,7 @@ public class MainTester_DAK_U11 {
      * Konstruktor
      * @param jarFilePath Variablenwert gesetzt
      */
-    public MainTester_DAK_U11(String jarFilePath) { this.jarFilePath = jarFilePath; }
+    public MainTester_Ü13(String jarFilePath) { this.jarFilePath = jarFilePath; }
 
     /***
      * Test der Methode main()
@@ -29,29 +30,26 @@ public class MainTester_DAK_U11 {
      * @throws Exception Handling wird an nächsthöhere Ebene weitergereicht
      */
     public TestResult<String> testMain() throws Exception {
-        // Ausrechnen des Lösungsstrings
-        for(int i = 0; i <= 100; i++) {
-            solution += i+" => ";
-            for(int j = 2; j <= 9; j++) {
-                if(i%j == 0) {
-                    solution += j+" ";
-                }
-                if(j == 9){
-                    solution += "\n";
-                }
+        for(int i = 40; i <= 90; i++) {
+            if(i%3 == 0) {
+                solution += i+" is dividable by 3\n";
+            } else {
+                solution += i + " is not dividable by 3\n";
             }
         }
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
-        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"main", new Object[]{new String[]{}}, new Class[]{String[].class});
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"main", new Object[]{new String[]{}}, new Class[]{String[].class});
         System.setOut(standardOut);
 
-        //Rückgabewert (null) und prüfen ob output im Lösungsstring vorkommt.
-        String output = outputStreamCaptor.toString().replaceAll("\r", "");
-        if (result == null && output.contains(solution)) {
-            return new TestResult<>(true, null);
+        //Rückgabewert (null) und prüfen wie oft 'gerade'ausgegeben wird
+        String output[] = outputStreamCaptor.toString().split("\r\n");
+        for(String outputValue: output){
+            if (!solution.contains(outputValue)) {
+                return new TestResult<>(false, "\n"+outputStreamCaptor.toString().trim()+"\n");
+            }
         }
-        return new TestResult<>(false, "\n"+output.trim()+"\n");
+        return new TestResult<>(true, null);
     }
 }
