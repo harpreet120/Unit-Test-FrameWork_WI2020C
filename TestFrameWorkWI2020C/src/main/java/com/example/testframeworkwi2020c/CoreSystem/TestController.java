@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.CoreSystem;
 
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
+import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.*;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.*;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.*;
