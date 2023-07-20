@@ -30,7 +30,7 @@ public class UnicornController implements Initializable {
             "05_Datentypen_Ü04", "05_Datentypen_Ü06", "05_Datentypen_Ü09", "05_Datentypen_Ü10", "05_Datentypen_Ü11",
             "05_Datentypen_Ü12", "05_Datentypen_Ü13", "05_Datentypen_Ü14", "06_Strings_Ü01", "06_Strings_Ü02", "06_Strings_Ü03", "07_Arrays_Ü01",
             "07_Arrays_Ü02", "08_User_Interaction_Ü01", "08_User_Interaction_Ü02", "08_User_Interaction_Ü03", "09_ArrayList_Hashtable_Ü01",
-            "09_ArrayList_Hashtable_Ü02", "Exkurs_Binary_Ü01", "Exkurs_Binary_Ü02", "X-I_unfair_dice", "X-II_black_jack", "X-III_StringController", "X-IV_Uno"};
+            "09_ArrayList_Hashtable_Ü02", "Exkurs_Binary_Ü01", "Exkurs_Binary_Ü02", "X-I_unfair_dice", "X-II_black_jack", "X-III_StringController"};
 
     // Hinzufügen der Aufgaben in das DropDown-Menü
     @Override
