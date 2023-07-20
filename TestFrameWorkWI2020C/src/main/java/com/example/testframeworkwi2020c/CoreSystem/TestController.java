@@ -1,19 +1,13 @@
 package com.example.testframeworkwi2020c.CoreSystem;
 
-import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü03_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
-import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.Exkurs_Binary_Ü01_Controller;
+import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.*;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.*;
-import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü01_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.T05_DAK_Ü04_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü02_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü01_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.T07_Arrays_Ü02_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü03_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü01_Controller;
-import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü02_Controller;
+import com.example.testframeworkwi2020c.testSammlung.t06_Strings.*;
+import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.*;
+import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.*;
 
 
 public class TestController{
@@ -66,6 +60,8 @@ public class TestController{
                 return testMainÜ03UserInteraction(jarFilePath);
             case "Exkurs_Binary_Ü01":
                 return testMainExkursBinary01(jarFilePath);
+            case "Exkurs_Binary_Ü02":
+                return testBinaryHelper(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -453,6 +449,22 @@ public class TestController{
         Exkurs_Binary_Ü01_Controller controller = new Exkurs_Binary_Ü01_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 02 aus Exkurs Binary
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testBinaryHelper(String jarFilePath){
+        String textAnUser = "";
+        Exkurs_Binary_Ü02_Controller controller = new Exkurs_Binary_Ü02_Controller();
+        try {
+            textAnUser += controller.testBinaryHelper(jarFilePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
