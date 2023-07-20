@@ -15,8 +15,8 @@ import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_Us
 import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü02_Controller;
 
 
-public class TestController implements ITester{
-    @Override
+public class TestController{
+
     public String startComparison(String aufgabenname, String jarFilePath) {
         switch (aufgabenname) {
             case "04_OOP_Ü04":

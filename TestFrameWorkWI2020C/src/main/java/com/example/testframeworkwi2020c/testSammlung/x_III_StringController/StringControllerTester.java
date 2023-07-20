@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.testSammlung.x_III_StringController;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.CoreSystem.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -16,20 +17,7 @@ public class StringControllerTester {
         this.jarFilePath = jarFilePath;
     }
 
-    public Boolean testAddString() throws Exception {
-        objectList = CodeRunnerBackend.jarTest(jarFilePath);
-        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
-        CodeRunnerBackend.invokeMethodByName(objectList,className,"addString"," World!");
-        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
-        if(result instanceof String) {
-            String str = (String) result;
-            if (str.equals("Hello World!"));
-            return true;
-        }
-        return false;
-    }
-
-    public Boolean testReplaceStringWithIndices() throws Exception {
+    public TestResult<String> testReplaceStringWithIndices() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello World!");
         CodeRunnerBackend.invokeMethodByName(objectList, className, "replaceString", new Object[]{6, 11, "Universe"}, new Class[]{int.class, int.class, String.class});
@@ -37,12 +25,25 @@ public class StringControllerTester {
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello Universe!"));
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        return new TestResult<>(false,(String) result);
     }
 
-    public Boolean testReplaceStringWithStartIndex() throws Exception {
+    public TestResult<String> testAddString() throws Exception {
+        objectList = CodeRunnerBackend.jarTest(jarFilePath);
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
+        CodeRunnerBackend.invokeMethodByName(objectList,className,"addString"," World!");
+        Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
+        if(result instanceof String) {
+            String str = (String) result;
+            if (str.equals("Hello World!"));
+            return new TestResult<>(true,null);
+        }
+        return new TestResult<>(false,(String) result);
+    }
+
+    public TestResult<String> testReplaceStringWithStartIndex() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello World!");
         CodeRunnerBackend.invokeMethodByName(objectList,className,"replaceString",new Object[]{6,"Universe"},new Class[]{int.class,String.class});
@@ -50,24 +51,24 @@ public class StringControllerTester {
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello Universe!"));
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        return new TestResult<>(false,(String) result);
     }
 
-    public Boolean testGetString() throws Exception {
+    public TestResult<String> testGetString() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getString");
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Hello"));
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        return new TestResult<>(false,(String) result);
     }
 
-    public Boolean testSetString() throws Exception {
+    public TestResult<String> testSetString() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Goodbye");
@@ -75,12 +76,12 @@ public class StringControllerTester {
         if(result instanceof String) {
             String str = (String) result;
             if (str.equals("Goodbye"));
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        return new TestResult<>(false,(String) result);
     }
 
-    public Boolean testGetLength() throws Exception {
+    public TestResult<Integer> testGetLength() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getLength");
@@ -88,12 +89,14 @@ public class StringControllerTester {
             Number num = (Number) result;
             Integer value = num.intValue();
             if (value == 5);
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        Number num = (Number) result;
+        Integer value = num.intValue();
+        return new TestResult<>(false,value);
     }
 
-    public Boolean testGetCapacity() throws Exception {
+    public TestResult<Integer> testGetCapacity() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         CodeRunnerBackend.invokeMethodByName(objectList,className,"setString","Hello");
         Object result = CodeRunnerBackend.invokeMethodByName(objectList,className,"getCapacity");
@@ -101,8 +104,10 @@ public class StringControllerTester {
             Number num = (Number) result;
             Integer value = num.intValue();
             if (value == 16);
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        Number num = (Number) result;
+        Integer value = num.intValue();
+        return new TestResult<>(false,value);
     }
 }

@@ -20,7 +20,7 @@ public class T08_User_Interaction_Ü03_Controller {
         if (testResult.isSuccess()) {
             textAnUser += "\n" + Emojis.RICHTIG.getEmoji() + " Die Methode main() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\n" + Emojis.FALSCH.getEmoji() + " Die Methode main() hat noch Fehler. Bitte stelle sicher, dass der Scanner richtig implementiert wurde sodass für den Input \"a\" und \"haaaalo\" 4 zurückgegeben wird. Aktuell wird: " + testResult.getReturnValue() + " zurückgegeben.";
+            textAnUser += "\n" + Emojis.FALSCH.getEmoji() + " Die Methode main() hat noch Fehler. Bitte stelle sicher, dass der Scanner richtig implementiert wurde sodass für den Input \"a\" und \"haaaalo\" 4 zurückgegeben wird. Aktuell wird: \n" + testResult.getReturnValue() + "\nzurückgegeben.";
         }
 
         textAnUser += "\nEnde der Tests für die Klasse Main\n";
