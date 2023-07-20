@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü04;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.CoreSystem.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -21,15 +22,15 @@ public class SmartphoneTester {
         this.jarFilePath = jarFilePath;
     }
 
-    public Boolean testClick() throws Exception {
+    public TestResult<String> testClick() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"dial");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("Klick")) {
-            return true;
+            return new TestResult<>(true,null);
         }
-        return false;
+        return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
 }

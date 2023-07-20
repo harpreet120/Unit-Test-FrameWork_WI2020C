@@ -12,7 +12,7 @@ public class T08_User_Interaction_Ü02_Controller {
      * @throws Exception wird weitergegeben
      */
     public String testMain(String jarFilePath) throws Exception{
-        String textAnUser = "\nBeginn der Tets für die Klasse Main";
+        String textAnUser = "\nBeginn der Tests für die Klasse Main";
         MainTester mainTester = new MainTester(jarFilePath);
         TestResult<String> testResult = mainTester.testMain();
         if (testResult.isSuccess()){

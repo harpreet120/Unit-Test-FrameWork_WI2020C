@@ -2,6 +2,7 @@ package com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü04;
 
 import com.example.testframeworkwi2020c.CoreSystem.CodeRunnerBackend;
 import com.example.testframeworkwi2020c.CoreSystem.TestController;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import javafx.util.Pair;
 
 import java.io.ByteArrayOutputStream;
@@ -20,25 +21,25 @@ public class MobileTester {
         this.jarFilePath = jarFilePath;
     }
 
-    public Boolean testDial() throws Exception {
+    public TestResult<String> testDial() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"dial");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("Piep")) {
-            return true;
+            return new TestResult<>(true,outputStreamCaptor.toString().trim());
         }
-        return false;
+        return new TestResult<>(false,null);
     }
 
-    public Boolean testRing() throws Exception {
+    public TestResult<String> testRing() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         System.setOut(new PrintStream(outputStreamCaptor));
         CodeRunnerBackend.invokeMethodByName(objectList,className,"ring");
         System.setOut(standardOut);
         if (outputStreamCaptor.toString().contains("Ding Dong")) {
-            return true;
+            return new TestResult<>(true,outputStreamCaptor.toString().trim());
         }
-        return false;
+        return new TestResult<>(false,null);
     }
 }

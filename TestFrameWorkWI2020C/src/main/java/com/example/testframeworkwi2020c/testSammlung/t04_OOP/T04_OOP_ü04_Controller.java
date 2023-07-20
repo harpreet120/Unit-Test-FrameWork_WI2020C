@@ -1,33 +1,40 @@
 package com.example.testframeworkwi2020c.testSammlung.t04_OOP;
 
+import com.example.testframeworkwi2020c.testSammlung.Emojis;
+import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü04.MobileTester;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü04.SmartphoneTester;
 
 public class T04_OOP_ü04_Controller {
     public String testSmartphone(String jarFilePath) throws Exception{
-        String textAnUser = "\nBeginn der Smartphone Tests";
+        String textAnUser = "\nBeginn der Tests für die Klasse Smartphone";
         SmartphoneTester smartphoneTester = new SmartphoneTester(jarFilePath);
-        if (smartphoneTester.testClick()){
-            textAnUser += "\nclick() erfolgreich getestet :)";
+        TestResult<String> testResult = smartphoneTester.testClick();
+        if (testResult.isSuccess()){
+            textAnUser += "\n" + Emojis.RICHTIG.getEmoji() + " Die Methode click() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nclick() hat noch Fehler. Bitte achte darauf, dass \"Klick\" in System.out.println() geschrieben wird ";
+            textAnUser += "\n" + Emojis.FALSCH.getEmoji() +" Die Methode click() hat noch Fehler. Es soll \"Klick\" im System.out.println() ausgegeben werden. Aktuell wird \""+testResult.getReturnValue()+"\" ausgegeben.";
         }
+        textAnUser += "\nEnde der Tests für die Klasse Smartphone\n";
         return textAnUser;
     }
 
     public String testMobile(String jarFilePath) throws Exception {
-        String textAnUser = "\nBeginn der Mobile Tests";
+        String textAnUser = "\n\nBeginn der Tests für die Klasse Mobile";
         MobileTester mobileTester = new MobileTester(jarFilePath);
-        if (mobileTester.testDial()) {
-            textAnUser += "\ndial() erfolgreich getestet :)";
+        TestResult<String> testResult = mobileTester.testDial();
+        if (testResult.isSuccess()) {
+            textAnUser += "\n" + Emojis.RICHTIG.getEmoji() + " Die Methode dial() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\ndial() hat noch Fehler. Bitte achte darauf, dass \"Piep\" in System.out.println() geschrieben wird ";
+            textAnUser += "\n" + Emojis.FALSCH.getEmoji() +" Die Methode click() hat noch Fehler. Es soll \"Piep\" im System.out.println() ausgegeben werden. Aktuell wird \""+testResult.getReturnValue()+"\" ausgegeben.";
         }
-        if (mobileTester.testRing()) {
-            textAnUser += "\nring() erfolgreich getestet :)";
+        testResult = mobileTester.testRing();
+        if (testResult.isSuccess()) {
+            textAnUser += "\n" + Emojis.RICHTIG.getEmoji() + " Die Methode ring() wurde erfolgreich getestet.";
         } else {
-            textAnUser += "\nring() hat noch Fehler. Bitte achte darauf, dass \"Ding Dong\" in System.out.println() geschrieben wird ";
+            textAnUser += "\n" + Emojis.FALSCH.getEmoji() +" Die Methode click() hat noch Fehler. Es soll \"Ding Dong\" im System.out.println() ausgegeben werden. Aktuell wird \""+testResult.getReturnValue()+"\" ausgegeben.";
         }
+        textAnUser += "\nEnde der Tests für die Klasse Mobile\n";
         return textAnUser;
     }
 }

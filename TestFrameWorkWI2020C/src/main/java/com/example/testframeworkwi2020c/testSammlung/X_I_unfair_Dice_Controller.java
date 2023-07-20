@@ -7,7 +7,7 @@ import com.example.testframeworkwi2020c.testSammlung.x_I_unfair_dice.UnfairDiceT
 
 public class X_I_unfair_Dice_Controller {
     public String testFairDice(String jarFilePath) throws Exception {
-        String textAnUser = "Beginn der FairDice Tests";
+        String textAnUser = "Beginn der Tests für die Klasse FairDice";
         FairDiceTester fairDiceTester = new FairDiceTester(jarFilePath);
         //TestGetNumber
         TestResult<Integer> getNumberResult = fairDiceTester.testGetNumber();
@@ -32,7 +32,7 @@ public class X_I_unfair_Dice_Controller {
     }
 
     public String testUnfairDice(String jarFilePath) throws Exception {
-        String textAnUser = "\n\nBeginn der UnfairDice Tests";
+        String textAnUser = "\n\nBeginn der Tests für die Klasse UnfairDice";
         UnfairDiceTester unfairDiceTester = new UnfairDiceTester(jarFilePath);
         //TestGetNumber
         TestResult<Integer> getNumberResult = unfairDiceTester.testGetNumber();
@@ -53,7 +53,7 @@ public class X_I_unfair_Dice_Controller {
     }
 
     public String testDealer(String jarFilePath) throws Exception {
-        String textAnUser = "\n\nBeginn der Dealer Tests";
+        String textAnUser = "\n\nBeginn der Tests für die Klasse Dealer";
         DealerTester dealerTester = new DealerTester(jarFilePath);
         //TestRollDice
         if (dealerTester.testRollDice()) {

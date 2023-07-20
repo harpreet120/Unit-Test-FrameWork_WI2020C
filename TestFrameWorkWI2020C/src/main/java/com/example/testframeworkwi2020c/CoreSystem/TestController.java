@@ -1,6 +1,8 @@
 package com.example.testframeworkwi2020c.CoreSystem;
 
+import com.example.testframeworkwi2020c.testSammlung.Emojis;
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
+import com.example.testframeworkwi2020c.testSammlung.X_II_black_jack_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.*;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
@@ -69,6 +71,8 @@ public class TestController{
                 return testHashtable_Ü02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
+            case "X-II_black_jack":
+                return testBlackjack(jarFilePath);
             case "X-III_StringController":
                 return testStringController(jarFilePath);
         }
@@ -521,6 +525,26 @@ public class TestController{
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
 //            textAnUser += testWuerfel.testDealer(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe X-II_black_jack
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testBlackjack(String jarFilePath) {
+        String textAnUser = "";
+        X_II_black_jack_Controller controller = new X_II_black_jack_Controller();
+        try {
+            textAnUser += controller.testRiskyPlayer(jarFilePath);
+            textAnUser += controller.testShyPlayer(jarFilePath);
+            textAnUser += controller.testManualPlayer(jarFilePath);
+            textAnUser += "\n\n"+ Emojis.BAUSTELLE.getEmoji() +"Die Klassen Game und Main können aufgrund der Limitierungen des Frameworks nicht getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }
