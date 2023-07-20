@@ -23,7 +23,7 @@ public class DVDTester {
     }
 
     /***
-     * Es werden die Methoden Play und Search einzeln getestet, indem der Print Stream abegglichen wird
+     * Es werden die Methode Play getestet, indem der Print Stream abgeglichen wird
      * @return der Standard Test Result wird ausgegeben
      * @throws Exception die nach oben weitergegeben wird
      */
@@ -39,6 +39,11 @@ public class DVDTester {
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
+    /***
+     * Es werden die Methode Search getestet, indem der Print Stream abgeglichen wird
+     * @return der Standard Test Result wird ausgegeben
+     * @throws Exception die nach oben weitergegeben wird
+     */
     public TestResult<String> testSearch() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

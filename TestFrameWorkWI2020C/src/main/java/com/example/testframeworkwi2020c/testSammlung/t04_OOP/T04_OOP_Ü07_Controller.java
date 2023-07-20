@@ -8,12 +8,11 @@ import com.example.testframeworkwi2020c.testSammlung.t04_OOP.ü07.DVDTester;
 public class T04_OOP_Ü07_Controller {
 
     /***
-     *  Stellt die Rückgabeoptionen dar für beide Klassen
+     *  Stellt die Rückgabeoptionen dar für die Klasse DVD
      * @param jarFilePath wird benötigt zur korrekten Anwendung
      * @return des fertigen textAnUser
      * @throws Exception wird weitergegeben
      */
-
     public String testDVD(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tets für die Klasse DVD";
         DVDTester dvdTester = new DVDTester(jarFilePath);
@@ -33,6 +32,12 @@ public class T04_OOP_Ü07_Controller {
         return textAnUser;
     }
 
+    /***
+     *  Stellt die Rückgabeoptionen dar für die Klasse Bluray
+     * @param jarFilePath wird benötigt zur korrekten Anwendung
+     * @return des fertigen textAnUser
+     * @throws Exception wird weitergegeben
+     */
     public String testBluray(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tets für die Klasse Bluray";
         BlurayTester blurayTester = new BlurayTester(jarFilePath);
