@@ -3,6 +3,7 @@ package com.example.testframeworkwi2020c.CoreSystem;
 import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü03_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
+import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.Exkurs_Binary_Ü01_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
 import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_Kontrolle.*;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.T06_Strings_Ü01_Controller;
@@ -63,6 +64,8 @@ public class TestController implements ITester{
                 return testMainÜ02UserInteraction(jarFilePath);
             case "08_User_Interaction_Ü03":
                 return testMainÜ03UserInteraction(jarFilePath);
+            case "Exkurs_Binary_Ü01":
+                return testMainExkursBinary01(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -432,6 +435,22 @@ public class TestController implements ITester{
     public String testMainÜ03UserInteraction(String jarFilePath){
         String textAnUser = "";
         T08_User_Interaction_Ü03_Controller controller = new T08_User_Interaction_Ü03_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 01 aus Exkurs Binary
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainExkursBinary01(String jarFilePath){
+        String textAnUser = "";
+        Exkurs_Binary_Ü01_Controller controller = new Exkurs_Binary_Ü01_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
