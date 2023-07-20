@@ -1,5 +1,6 @@
 package com.example.testframeworkwi2020c.CoreSystem;
 
+import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.T08_User_Interaction_Ü03_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
@@ -60,6 +61,8 @@ public class TestController implements ITester{
                 return testMainÜ01UserInteraction(jarFilePath);
             case "08_User_Interaction_Ü02":
                 return testMainÜ02UserInteraction(jarFilePath);
+            case "08_User_Interaction_Ü03":
+                return testMainÜ03UserInteraction(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
             case "X-III_StringController":
@@ -414,6 +417,21 @@ public class TestController implements ITester{
     public String testMainÜ02UserInteraction(String jarFilePath){
         String textAnUser = "";
         T08_User_Interaction_Ü02_Controller controller = new T08_User_Interaction_Ü02_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+    /***
+     * Tests für die Übungsaufgabe 03 aus User_Interaction
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testMainÜ03UserInteraction(String jarFilePath){
+        String textAnUser = "";
+        T08_User_Interaction_Ü03_Controller controller = new T08_User_Interaction_Ü03_Controller();
         try {
             textAnUser += controller.testMain(jarFilePath);
         } catch (Exception e) {
