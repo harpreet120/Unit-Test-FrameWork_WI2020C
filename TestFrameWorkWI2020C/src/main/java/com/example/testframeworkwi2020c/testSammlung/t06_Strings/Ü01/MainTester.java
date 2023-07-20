@@ -53,6 +53,11 @@ public class MainTester {
             "Zahl 30 ist durch 5 teilbar",
     };
 
+    /***
+     * Testet, ob das Ergebnis des Programms mit den möglichen Korrekten Antworten übereinstimmt, in dem der String zerlegt wird und die Elemente einzeln geprüft werden
+     * @return TestResult, ob der Test erfolgreich war oder nicht
+     * @throws Exception wenn eine Methode nicht funktioniert
+     */
     // Test der Methode main()
     public TestResult<String> testMain() throws Exception {
 

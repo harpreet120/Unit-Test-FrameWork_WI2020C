@@ -5,6 +5,12 @@ import com.example.testframeworkwi2020c.testSammlung.TestResult;
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.Ü03.StringTesterTester;
 
 public class T06_Strings_Ü03_Controller {
+    /***
+     *  Stellt die Rückgabeoptionen für die einzelnen Methoden dar
+     * @param jarFilePath wird benötigt zur korrekten Anwendung
+     * @return der fertigen textAnUser
+     * @throws Exception wird weitergegeben
+     */
     public String testStringTester(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tets für die Klasse StringTester";
         StringTesterTester stringTester = new StringTesterTester(jarFilePath);

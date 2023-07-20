@@ -5,6 +5,12 @@ import com.example.testframeworkwi2020c.testSammlung.t06_Strings.Ü01.MainTester
 
 public class T06_Strings_Ü01_Controller {
 
+    /***
+     *  Stellt die Rückgabeoptionen dar
+     * @param jarFilePath wird benötigt zur korrekten Anwendung
+     * @return der fertigen textAnUser
+     * @throws Exception wird weitergegeben
+     */
     public String testMain(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tets für die Klasse Main";
         MainTester mainTester = new MainTester(jarFilePath);

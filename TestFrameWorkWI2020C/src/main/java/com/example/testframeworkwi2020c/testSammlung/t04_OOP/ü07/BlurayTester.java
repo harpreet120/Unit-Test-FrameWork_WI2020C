@@ -21,6 +21,11 @@ public class BlurayTester {
         this.jarFilePath = jarFilePath;
     }
 
+    /***
+     * Es werden die Methoden Play und Search einzeln getestet, indem der Print Stream abegglichen wird
+     * @return der Standard Test Result wird ausgegeben
+     * @throws Exception die nach oben weitergegeben wird
+     */
     public TestResult<String> testPlay() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

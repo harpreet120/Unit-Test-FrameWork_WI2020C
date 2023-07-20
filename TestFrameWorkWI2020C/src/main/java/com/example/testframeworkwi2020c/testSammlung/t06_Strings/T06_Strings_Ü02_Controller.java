@@ -6,6 +6,12 @@ import com.example.testframeworkwi2020c.testSammlung.t06_Strings.Ü02.DiceTester
 
 public class T06_Strings_Ü02_Controller {
 
+    /***
+     *  Stellt die Rückgabeoptionen dar, je nachdem welche TestResults bei welchen Test erhalten werden
+     * @param jarFilePath wird benötigt zur korrekten Anwendung
+     * @return der fertigen textAnUser
+     * @throws Exception wird weitergegeben
+     */
     public String testDice(String jarFilePath) throws Exception{
         String textAnUser = "\nBeginn der Tets für die Klasse Dice";
         DiceTester diceTester = new DiceTester(jarFilePath);
