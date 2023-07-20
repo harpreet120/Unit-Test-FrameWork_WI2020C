@@ -108,7 +108,6 @@ public class TestController{
             textAnUser += controller.testCircle(jarFilePath);
             textAnUser += controller.testQuadrat(jarFilePath);
             textAnUser += "\nDas Interface 'IFigure' kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,15 +142,14 @@ public class TestController{
         String textAnUser = "";
         T04_OOP_Ü07_Controller controller = new T04_OOP_Ü07_Controller();
         try {
-            textAnUser += controller.testDVD(jarFilePath);
-            textAnUser += "\n";
+            textAnUser += controller.testDVD(jarFilePath)+"\n";
             textAnUser += controller.testBluray(jarFilePath);
+            textAnUser += "\n";
+            textAnUser += "\nDas Interface \"IDisc\" kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
+            textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }
-        textAnUser += "\n";
-        textAnUser += "\nDas Interface \"IDisc\" kann aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
-        textAnUser += "\nDie Klasse Player und ihre Methoden können aufgrund von Limitierungen des Testframeworks nicht getestet werden.";
         return textAnUser;
     }
 
@@ -524,7 +522,7 @@ public class TestController{
         try {
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
-//            textAnUser += testWuerfel.testDealer(jarFilePath);
+            textAnUser += "\n\nDie Klasse Dealer kann aufgrund der Limitierungen des Frameworks nicht getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -544,7 +542,7 @@ public class TestController{
             textAnUser += controller.testRiskyPlayer(jarFilePath);
             textAnUser += controller.testShyPlayer(jarFilePath);
             textAnUser += controller.testManualPlayer(jarFilePath);
-            textAnUser += "\n\n"+ Emojis.BAUSTELLE.getEmoji() +"Die Klassen Game und Main können aufgrund der Limitierungen des Frameworks nicht getestet werden.";
+            textAnUser += "\n\nDie Klassen Game und Main können aufgrund der Limitierungen des Frameworks nicht getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }
