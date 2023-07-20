@@ -1,6 +1,8 @@
 package com.example.testframeworkwi2020c.CoreSystem;
 
+import com.example.testframeworkwi2020c.testSammlung.Emojis;
 import com.example.testframeworkwi2020c.testSammlung.X_III_StringController_Controller;
+import com.example.testframeworkwi2020c.testSammlung.X_II_black_jack_Controller;
 import com.example.testframeworkwi2020c.testSammlung.X_I_unfair_Dice_Controller;
 import com.example.testframeworkwi2020c.testSammlung.exkurs_binary.*;
 import com.example.testframeworkwi2020c.testSammlung.t04_OOP.*;
@@ -8,6 +10,7 @@ import com.example.testframeworkwi2020c.testSammlung.t05_Datentypen_Arithmetik_K
 import com.example.testframeworkwi2020c.testSammlung.t06_Strings.*;
 import com.example.testframeworkwi2020c.testSammlung.t07_Arrays.*;
 import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.*;
+import com.example.testframeworkwi2020c.testSammlung.t09_ArrayList_Hashtable.*;
 
 
 public class TestController{
@@ -62,8 +65,14 @@ public class TestController{
                 return testMainExkursBinary01(jarFilePath);
             case "Exkurs_Binary_Ü02":
                 return testBinaryHelper(jarFilePath);
+            case "09_ArrayList_Hashtable_Ü01":
+                return testHashtable_Ü01(jarFilePath);
+            case "09_ArrayList_Hashtable_Ü02":
+                return testHashtable_Ü02(jarFilePath);
             case "X-I_unfair_dice":
                 return testWuerfel(jarFilePath);
+            case "X-II_black_jack":
+                return testBlackjack(jarFilePath);
             case "X-III_StringController":
                 return testStringController(jarFilePath);
         }
@@ -472,6 +481,39 @@ public class TestController{
     }
 
     /***
+     * Tests für die Übungsaufgabe 01 aus ArrayList_Hashtable
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testHashtable_Ü01(String jarFilePath){
+        String textAnUser = "";
+        T09_ArrayList_Hashtable_Ü01_Controller controller = new T09_ArrayList_Hashtable_Ü01_Controller();
+        try {
+            textAnUser += controller.testPerson(jarFilePath);
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe 02 aus ArrayList_Hashtable
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testHashtable_Ü02(String jarFilePath){
+        String textAnUser = "";
+        T09_ArrayList_Hashtable_Ü02_Controller controller = new T09_ArrayList_Hashtable_Ü02_Controller();
+        try {
+            textAnUser += controller.testMain(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return textAnUser;
+    }
+
+    /***
      * Tests für die Übungsaufgabe X-I_unfair_dice
      * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
      * @return Weitergabe des "Text an User"
@@ -483,6 +525,26 @@ public class TestController{
             textAnUser += testWuerfel.testFairDice(jarFilePath);
             textAnUser += testWuerfel.testUnfairDice(jarFilePath);
 //            textAnUser += testWuerfel.testDealer(jarFilePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return textAnUser;
+    }
+
+    /***
+     * Tests für die Übungsaufgabe X-II_black_jack
+     * @param jarFilePath Wird in die jeweiligen zu testenden Klassen übergeben
+     * @return Weitergabe des "Text an User"
+     */
+    public String testBlackjack(String jarFilePath) {
+        String textAnUser = "";
+        X_II_black_jack_Controller controller = new X_II_black_jack_Controller();
+        try {
+            textAnUser += controller.testRiskyPlayer(jarFilePath);
+            textAnUser += controller.testShyPlayer(jarFilePath);
+            textAnUser += controller.testManualPlayer(jarFilePath);
+            textAnUser += "\n\n"+ Emojis.BAUSTELLE.getEmoji() +"Die Klassen Game und Main können aufgrund der Limitierungen des Frameworks nicht getestet werden.";
         } catch (Exception e) {
             e.printStackTrace();
         }

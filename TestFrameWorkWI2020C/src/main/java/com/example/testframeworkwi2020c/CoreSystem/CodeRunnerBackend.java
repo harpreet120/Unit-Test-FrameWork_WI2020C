@@ -2,8 +2,10 @@ package com.example.testframeworkwi2020c.CoreSystem;
 
 import javafx.util.Pair;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +28,7 @@ public class CodeRunnerBackend {
      * @return Eine Liste von Klassen-Objekt-Paaren.
      * @throws Exception Falls ein Fehler beim Durchsuchen der Jar-Datei oder bei der Instanziierung der Klassen auftritt.
      */
-    public static List<Pair<String, Object>> jarTest(String jarFilePath) throws Exception {
+    public static List<Pair<String, Object>> jarTest(String jarFilePath,Integer... manualPlayer) throws Exception {
         // Erstellt eine Liste, um die Objekte zu speichern, die in der Jar-Datei gefunden wurden.
         List<Pair<String, Object>> objects = new ArrayList<>();
 
@@ -48,6 +50,16 @@ public class CodeRunnerBackend {
                                 System.out.println("Die Klasse " + className + " ist abstrakt und kann nicht instanziiert werden.");
                                 return;
                             }
+                            if ((clazz.getSimpleName() == "ManualPlayer" && manualPlayer.length == 0) || clazz.getSimpleName() == "Game"){
+                                return;
+                            }
+                            if ((manualPlayer.length != 0) && clazz.getSimpleName() == "ManualPlayer"){
+                                InputStream standardIn = System.in;
+                                String userInput = ""+manualPlayer[0];
+                                ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+                                System.setIn(inputStream);
+//                                System.setIn(standardIn);
+                            }
                             // Erstellen einer Instanz der Klasse
                             Object instance = clazz.getDeclaredConstructor().newInstance();
                             // Hinzufügen des Klassennamens (ohne Paketnamen) und der Instanz zur Liste
@@ -58,7 +70,6 @@ public class CodeRunnerBackend {
                         }
                     });
         }
-
         return objects;
     }
 
@@ -97,6 +108,10 @@ public class CodeRunnerBackend {
                             // Überprüfen, ob die Klasse abstrakt ist
                             if (java.lang.reflect.Modifier.isAbstract(clazz.getModifiers())) {
                                 System.out.println("Die Klasse " + className + " ist abstrakt und kann nicht instanziiert werden.");
+                                return;
+                            }
+
+                            if (clazz.getSimpleName() == "ManualPlayer" || clazz.getSimpleName() == "Game"){
                                 return;
                             }
 

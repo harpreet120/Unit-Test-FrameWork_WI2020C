@@ -6,8 +6,8 @@ import com.example.testframeworkwi2020c.testSammlung.t08_User_Interaction.Ü03.M
 
 public class T08_User_Interaction_Ü03_Controller {
     /***
-     * Tests für die Klasse Fibonacci
-     * @param jarFilePath wird an Objekt der Klasse Fibonacci übergeben
+     * Tests für die Klasse Main
+     * @param jarFilePath wird an Objekt der Klasse Main übergeben
      * @return Ausgabe an den Benutzer
      * @throws Exception Handling an nächsthöhere Instanz
      */
