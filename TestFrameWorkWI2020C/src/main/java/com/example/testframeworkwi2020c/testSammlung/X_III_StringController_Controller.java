@@ -5,49 +5,56 @@ import com.example.testframeworkwi2020c.testSammlung.x_III_StringController.Stri
 public class X_III_StringController_Controller {
 
     public String testStringController(String jarFilePath) throws Exception {
-        String textAnUser = "\nBeginn der Stringcontroller Tests";
+        String textAnUser = "\nBeginn der Tests für die Klasse StringController";
         StringControllerTester tester = new StringControllerTester(jarFilePath);
+        TestResult<String> testResult= tester.testAddString();
         //TestAddString
-        if (tester.testAddString()) {
-            textAnUser += "\naddString() erfolgreich getestet :)";
+        if (testResult.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode addString() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\naddString() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode addString() hat noch Fehler. Bei einem Input von \"Hello\" und einem addieren von \" World\" soll \"Hello World\" gespeichert werden. Aktuell wird \"" + testResult.getReturnValue() + "\" gespeichert";
         }
+        testResult= tester.testReplaceStringWithIndices();
         //TestReplaceStringWithIndices
-        if (tester.testReplaceStringWithIndices()) {
-            textAnUser += "\nreplaceStringWithIndices() erfolgreich getestet :)";
+        if (testResult.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode replaceStringWithIndices() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\nreplaceStringWithIndices() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode replaceStringWithIndices() hat noch Fehler. Der String \"Hello World!\" soll bei einem Input von 6,11,\"Universe\" lokal als \"Hello Universe!\" gespeichert werden. Aktuell wird \"" + testResult.getReturnValue() + "\" gespeichert";
         }
+        testResult= tester.testReplaceStringWithStartIndex();
         //TestReplaceStringWithStartIndex
-        if (tester.testReplaceStringWithStartIndex()) {
-            textAnUser += "\nreplaceStringWithStartIndex() erfolgreich getestet :)";
+        if (testResult.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode replaceStringWithStartIndex() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\nreplaceStringWithStartIndex() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode replaceStringWithStartIndex() hat noch Fehler. Der String \"Hello World!\" soll bei einem Input von 6,\"Universe\" lokal als \"Hello Universe!\" gespeichert werden. Aktuell wird \"" + testResult.getReturnValue() + "\" gespeichert";
         }
+        testResult= tester.testGetString();
         //TestGetString
-        if (tester.testGetString()) {
-            textAnUser += "\ngetString() erfolgreich getestet :)";
+        if (testResult.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode getString() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\ngetString() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode getString() hat noch Fehler. Es soll \"Hello\" zurückgegeben werden. Aktuell wird \""+testResult.getReturnValue()+"\" zurückgegeben.";
         }
+        testResult= tester.testSetString();
         //TestSetString
-        if (tester.testSetString()) {
-            textAnUser += "\nsetString() erfolgreich getestet :)";
+        if (testResult.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode setString() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\nsetString() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode setString() hat noch Fehler Es soll \"Goodbye\" gespeichert werden. Aktuell wird \""+testResult.getReturnValue()+"\" gespeichert.";
         }
+        TestResult<Integer> testResultInt= tester.testGetLength();
         //TestGetLength
-        if (tester.testGetLength()) {
-            textAnUser += "\ngetLength() erfolgreich getestet :)";
+        if (testResultInt.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode getLength() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\ngetLength() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode getLength() hat noch Fehler. Es soll bei einem Input von \"Hello\", 5 zurückgegeben werden. Aktuell wird \""+testResultInt.getReturnValue()+"\" zurückgegeben.";
         }
+        testResultInt= tester.testGetCapacity();
         //TestGetCapacity
-        if (tester.testGetCapacity()) {
-            textAnUser += "\ngetCapacity() erfolgreich getestet :)";
+        if (testResultInt.isSuccess()) {
+            textAnUser += "\n"+Emojis.RICHTIG.getEmoji()+"Die Methode getCapacity() wurde erfolgreich getestet. ";
         } else {
-            textAnUser += "\ngetCapacity() hat noch Fehler :(";
+            textAnUser += "\n"+ Emojis.FALSCH.getEmoji()+"Die Methode getCapacity() hat noch Fehler. Es soll bei einem Input von \"Hello\", 16 zurückgegeben werden. Aktuell wird \""+testResultInt.getReturnValue()+"\" zurückgegeben.";
         }
         return textAnUser;
     }
