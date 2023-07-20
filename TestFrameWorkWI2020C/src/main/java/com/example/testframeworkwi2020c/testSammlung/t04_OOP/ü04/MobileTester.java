@@ -21,25 +21,57 @@ public class MobileTester {
         this.jarFilePath = jarFilePath;
     }
 
+    /**
+     * Führt den Test für die Methode dial() der Klasse Mobile aus.
+     *
+     * @return Ein TestResult-Objekt, das den Testergebnisstatus und ggf. die erfasste Ausgabe enthält.
+     * @throws Exception Falls eine Ausnahme auftritt, wird sie an die aufrufende Methode weitergeleitet.
+     */
     public TestResult<String> testDial() throws Exception {
+        // Testen der Klasse Smartphone durch Ausführen der übergebenen JAR-Datei
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+
+        // Redirect System.out zum outputStreamCaptor, um die Ausgabe zu erfassen
         System.setOut(new PrintStream(outputStreamCaptor));
-        CodeRunnerBackend.invokeMethodByName(objectList,className,"dial");
+
+        // Aufruf der Methode "dial" der Klasse Smartphone
+        CodeRunnerBackend.invokeMethodByName(objectList, className, "dial");
+
+        // Setze System.out zurück auf den ursprünglichen Zustand
         System.setOut(standardOut);
+
+        // Überprüfen, ob die erwartete Ausgabe "Piep" in der erfassten Ausgabe vorhanden ist
         if (outputStreamCaptor.toString().contains("Piep")) {
-            return new TestResult<>(true,outputStreamCaptor.toString().trim());
+            return new TestResult<>(true, outputStreamCaptor.toString().trim()); // Test erfolgreich, gib die erfasste Ausgabe zurück
+        } else {
+            return new TestResult<>(false, null); // Test fehlgeschlagen
         }
-        return new TestResult<>(false,null);
     }
 
+    /**
+     * Führt den Test für die Methode ring() der Klasse Smartphone aus.
+     *
+     * @return Ein TestResult-Objekt, das den Testergebnisstatus und ggf. die erfasste Ausgabe enthält.
+     * @throws Exception Falls eine Ausnahme auftritt, wird sie an die aufrufende Methode weitergeleitet.
+     */
     public TestResult<String> testRing() throws Exception {
+        // Testen der Klasse Smartphone durch Ausführen der übergebenen JAR-Datei
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
+
+        // Redirect System.out zum outputStreamCaptor, um die Ausgabe zu erfassen
         System.setOut(new PrintStream(outputStreamCaptor));
-        CodeRunnerBackend.invokeMethodByName(objectList,className,"ring");
+
+        // Aufruf der Methode "ring" der Klasse Smartphone
+        CodeRunnerBackend.invokeMethodByName(objectList, className, "ring");
+
+        // Setze System.out zurück auf den ursprünglichen Zustand
         System.setOut(standardOut);
+
+        // Überprüfen, ob die erwartete Ausgabe "Ding Dong" in der erfassten Ausgabe vorhanden ist
         if (outputStreamCaptor.toString().contains("Ding Dong")) {
-            return new TestResult<>(true,outputStreamCaptor.toString().trim());
+            return new TestResult<>(true, outputStreamCaptor.toString().trim()); // Test erfolgreich, gib die erfasste Ausgabe zurück
+        } else {
+            return new TestResult<>(false, null); // Test fehlgeschlagen
         }
-        return new TestResult<>(false,null);
     }
 }
