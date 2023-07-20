@@ -41,6 +41,11 @@ public class StringTesterTester {
         return new TestResult<>(false,counter.toString().trim());
     }
 
+    /***
+     * Testet, ob das Programm die überladene Methode countOccurance richtig ausführt, indem sie befüllt und auf das korrekte Ergebnis geprüft werden
+     * @return TestResult, ob der Test erfolgreich war oder nicht
+     * @throws Exception wenn eine Methode nicht funktioniert
+     */
     public TestResult<String> testCountOccurance2() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();

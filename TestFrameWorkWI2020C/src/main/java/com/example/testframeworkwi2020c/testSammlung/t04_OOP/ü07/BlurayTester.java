@@ -16,16 +16,15 @@ public class BlurayTester {
     private final PrintStream standardOut = System.out;
     private ByteArrayOutputStream outputStreamCaptor;
 
-
     public BlurayTester(String jarFilePath) {
         this.jarFilePath = jarFilePath;
     }
 
     /***
-     * Es werden die Methoden Play und Search einzeln getestet, indem der Print Stream abegglichen wird
+     * Es wird die Methode Play getestet, indem der Print Stream abgeglichen wird
      * @return der Standard Test Result wird ausgegeben
      * @throws Exception die nach oben weitergegeben wird
-     */
+    */
     public TestResult<String> testPlay() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
@@ -38,6 +37,11 @@ public class BlurayTester {
         return new TestResult<>(false,outputStreamCaptor.toString().trim());
     }
 
+    /***
+     * Es wird die Methode Search getestet, indem der Print Stream abgeglichen wird
+     * @return der Standard Test Result wird ausgegeben
+     * @throws Exception die nach oben weitergegeben wird
+     */
     public TestResult<String> testSearch() throws Exception {
         objectList = CodeRunnerBackend.jarTest(jarFilePath);
         outputStreamCaptor = new ByteArrayOutputStream();
